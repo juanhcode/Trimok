@@ -19,7 +19,7 @@ Clase: tablero
 Responsabilidad: 
 -mostrar ficha
 -cambiar Puntaje
-Colaboracion: ?????????????????????????????????que hacer en esta parte?¿¿¿¿?¿?¿?¿?¿?¿?
+Colaboracion: (QUE COLABORACION ES)
 */
 #ifndef __CLASSTABLERO
 #define __CLASSTABLERO
@@ -27,18 +27,18 @@ Colaboracion: ?????????????????????????????????que hacer en esta parte?¿¿¿¿?
 class Tablero
 {
 private:
-    int x;
-    int y;
     int puntaje;
 public:
     Tablero();
-    void mostrarFichas(Ficha,int calcularficha);
+    void mostrarFichas(Ficha,int calcularPosicion);
     int cambiarPuntaje(int puntaje,int tablero);
     ~Tablero();
 };
-{
-Tablero::Tablero(); //PREGUNTAR.........//
-}
+
+Tablero::Tablero()
+{     //PREGUNTAR.........// Porque dice que se espera una declaracion
+
+}; 
 
 
 

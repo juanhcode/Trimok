@@ -21,7 +21,7 @@ Responsabilidad:
 -Visualizar el marcador
 -int obtener Jugadores
 -Empezar juego
-Colaboracion: Ninguna. (PREGUNTA)
+Colaboracion: Ninguna. (PREGUNTA) QUE COLABORACION ES
 */
 #include "Ficha.h"
 #include "Jugador.h"
@@ -38,8 +38,6 @@ public:
     int visualizarMarcador(int puntaje);
     int obtenerjugadores();
     bool empezarjuego(Tablero,Jugador,Ficha);
-    int obtenerJugadores();
-    
     ~Trimok();
 };
 

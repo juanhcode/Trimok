@@ -18,7 +18,7 @@ Correos electronicos: juan.manuel.hoyos@correounivalle.edu.co
 Clase: Juez
 Responsabilidad:
 - Mostrar el Ganador
-Colaboracion: Tabler
+Colaboracion: Tablero
 */
 #include <iostream>
 using namespace std; //(PREGUNTA)
@@ -32,7 +32,7 @@ private:
     
 public:
     Juez();
-    string mostrarganador();
+    string mostrarganador(int puntaje);
     ~Juez();
 };
 

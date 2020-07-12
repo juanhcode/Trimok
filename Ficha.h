@@ -24,18 +24,21 @@ Colaboracion: Tablero
 */
 #ifndef __CLASSFICHA
 #define __CLASSFICHA
+#include <iostream>
+using namespace std;
 
 class Ficha
 {
 private:
-    std::string blanco;
-    std::string negro;
+    string color;
+    int x;
+    int y;
 
 public:
     Ficha();
-    void colorFicha();
-    char darFicha(int colorFicha,int posiciones, int cantidadDeFichas);
-    int calcularposicion (int x, int y,int colorFicha );
+    void colorFicha(string color);
+    int darFicha(int colorFicha,int posiciones);
+    int calcularPosicion (int x, int y,string color );
     ~Ficha();
 };
 
@@ -46,9 +49,5 @@ Ficha::Ficha(/* args */)
 Ficha::~Ficha()
 {
 }
-
-Ficha::Ficha Papel;
-Ficha::Ficha Roca;
-Ficha::Ficha Tijera;
 
 #endif // __CLASFICHA
