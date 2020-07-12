@@ -1,9 +1,13 @@
-#include "Jugador.h"
 #include <iostream>
+#include "Ficha.h"
+#include "Trimok.h"
 using namespace std;
 int main(){
 
-    return 0;    
+    Trimok Jugador;
+    Jugador.mostrarMenu();
+    Jugador.visualizar();
+    return 0;   
 }
 
     
