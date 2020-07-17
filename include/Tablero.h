@@ -15,38 +15,31 @@ Correos electronicos: juan.manuel.hoyos@correounivalle.edu.co
                     : gallego.cesar@correounivalle.edu.co
                     : Lui.alegria@correounivalle.edu.co
 /CRC:
-Clase: Trimok
-Responsabilidad:
--Mostrar el Menu
--Visualizar el marcador
--int obtener Jugadores
--Empezar juego
-Colaboracion: Ninguna. (PREGUNTA) QUE COLABORACION ES
+Clase: tablero 
+Responsabilidad: 
+-mostrar ficha
+-cambiar Puntaje
+Colaboracion: Ficha
 */
+#ifndef __CLASSTABLERO
+#define __CLASSTABLERO
 #include "Ficha.h"
-#include "Jugador.h"
-#include "Tablero.h"
-#ifndef __TRIMOK
-#define __TRIMOK
-class Trimok
+class Tablero
 {
 private:
-    int opcion;
 public:
-    Trimok(/* args */);
-    void mostrarMenu();
-    int visualizarMarcador(int puntaje);
-    int obtenerjugadores();
-    bool empezarjuego(Tablero,Jugador,Ficha);
-    ~Trimok();
+    Tablero();
+    bool hayUnaFichaEnUnaPosicion(int x,int y);
+    bool esVaciaUnaPosicion(int x,int y);
+    bool puedeMoverFicha(int posx,int posy);
+    void moverFicha(int actualx,int actualy,int nuevax,int nuevay);
+    int posYPrimeraFichaEnAaparecer(int color);
+    int posXPrimeraFichaEnAaparecer(int color);
+    Ficha darFicha(int x, int y);
+    bool retornoHabilitado(int x,int y);
+    bool puedeHacerRetorno(int actualx,int actualy,int nuevax,int nuevay);
+    ~Tablero();
 };
 
-Trimok::Trimok(/* args */)
-{
-}
+#endif // __CLASTABLERO
 
-Trimok::~Trimok()
-{
-}
-
-#endif //__TRIMOK

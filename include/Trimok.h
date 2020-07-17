@@ -15,36 +15,32 @@ Correos electronicos: juan.manuel.hoyos@correounivalle.edu.co
                     : gallego.cesar@correounivalle.edu.co
                     : Lui.alegria@correounivalle.edu.co
 /CRC:
-Clase: Jugador
+Clase: Trimok
 Responsabilidad:
--Mover Ficha
--Captura la ficha del opositor
--hacer movimiento Especial
-Colaboracion: Tablero
+-Mostrar el Menu
+-Visualizar el marcador
+-int obtener Jugadores
+-Empezar juego
+Colaboracion: Ninguna
 */
 #include "Ficha.h"
+#include "Jugador.h"
 #include "Tablero.h"
-#ifndef __CLASSJUGADOR
-#define __CLASSJUGADOR
-
-class Jugador
+#ifndef __TRIMOK
+#define __TRIMOK
+class Trimok
 {
 private:
-    /* data */
+    int opcion;
+    int puntaje;
 public:
-    Jugador(/* args */);
-    int moverFicha(Ficha,int posicion );
-    int capturarFichasDelOpositor(Ficha,Tablero);
-    int movimientoEspecial(Ficha,Tablero);
-    ~Jugador();
+    Trimok(/* args */);
+    void mostrarMenu();
+    int cambiarPuntaje(int puntaje,int tablero);
+    int visualizarMarcador(int puntaje);
+    int obtenerjugadores();
+    bool empezarjuego(Tablero tablerito,Jugador jugador1,Jugador jugador2,Ficha fichas);
+    ~Trimok();
 };
 
-Jugador::Jugador(/* args */)
-{
-}
-
-Jugador::~Jugador()
-{
-}
-
-#endif // __CLASJUGADOR
+#endif //__TRIMOK

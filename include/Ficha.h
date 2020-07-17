@@ -30,24 +30,23 @@ using namespace std;
 class Ficha
 {
 private:
-    string color;
-    int x;
-    int y;
+    int color;//
+    int tipo;
+    int X;
+    int Y;
 
 public:
-    Ficha();
-    void colorFicha(string color);
-    int darFicha(int colorFicha,int posiciones);
-    int calcularPosicion (int x, int y,string color );
+    Ficha(int color,int tipo,int posicionEnX,int posicionEnY);
+    int darColor();
+    int darTipo();
+    int darPosicionEnX();
+    int darPosicionEnY();
+    bool esUnEspacioVacio();
+    bool puedeMoverse();
+    bool puedeComerUnaFicha(Ficha fichaAComer);
+    bool retornoHabilitado();
+    void cambiarTipo(int nuevoTipo);
     ~Ficha();
 };
-
-Ficha::Ficha(/* args */)
-{
-}
-
-Ficha::~Ficha()
-{
-}
 
 #endif // __CLASFICHA

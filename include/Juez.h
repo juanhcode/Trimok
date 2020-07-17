@@ -15,37 +15,25 @@ Correos electronicos: juan.manuel.hoyos@correounivalle.edu.co
                     : gallego.cesar@correounivalle.edu.co
                     : Lui.alegria@correounivalle.edu.co
 /CRC:
-Clase: tablero 
-Responsabilidad: 
--mostrar ficha
--cambiar Puntaje
-Colaboracion: (QUE COLABORACION ES)
+Clase: Juez
+Responsabilidad:
+- Mostrar el Ganador
+Colaboracion: Tablero
 */
-#ifndef __CLASSTABLERO
-#define __CLASSTABLERO
-#include "Ficha.h"
-class Tablero
+#include <iostream>
+using namespace std; //(PREGUNTA)
+#ifndef __CLASSJUEZ
+#define __CLASSJUEZ
+
+
+class Juez
 {
 private:
-    int puntaje;
+    
 public:
-    Tablero();
-    void mostrarFichas(Ficha,int calcularPosicion);
-    int cambiarPuntaje(int puntaje,int tablero);
-    ~Tablero();
+    Juez();
+    string mostrarganador(int puntaje);
+    ~Juez();
 };
 
-Tablero::Tablero()
-{     //PREGUNTAR.........// Porque dice que se espera una declaracion
-
-}; 
-
-
-
-
-Tablero::~Tablero()
-{
-}
-
-#endif // __CLASTABLERO
-
+#endif // __CLASJUEZ

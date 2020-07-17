@@ -15,33 +15,28 @@ Correos electronicos: juan.manuel.hoyos@correounivalle.edu.co
                     : gallego.cesar@correounivalle.edu.co
                     : Lui.alegria@correounivalle.edu.co
 /CRC:
-Clase: Juez
+Clase: Jugador
 Responsabilidad:
-- Mostrar el Ganador
+-Mover Ficha
+-Captura la ficha del opositor
+-hacer movimiento Especial
 Colaboracion: Tablero
 */
-#include <iostream>
-using namespace std; //(PREGUNTA)
-#ifndef __CLASSJUEZ
-#define __CLASSJUEZ
+#include "Ficha.h"
+#include "Tablero.h"
+#ifndef __CLASSJUGADOR
+#define __CLASSJUGADOR
 
-
-class Juez
+class Jugador
 {
 private:
-    
+    /* data */
 public:
-    Juez();
-    string mostrarganador(int puntaje);
-    ~Juez();
+    Jugador(/* args */);
+    int moverFicha(Ficha fichas,int posicion );
+    int capturarFichasDelOpositor(Ficha fichas ,Tablero);
+    int movimientoEspecial(Ficha fichas,Tablero);
+    ~Jugador();
 };
 
-Juez::Juez(/* args */)
-{
-}
-
-Juez::~Juez()
-{
-}
-
-#endif // __CLASJUEZ
+#endif // __CLASJUGADOR

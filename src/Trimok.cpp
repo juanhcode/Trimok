@@ -1,4 +1,4 @@
-#include "Trimok.h"
+#include "./Trimok.h"
 #include <iostream>
 using namespace std;
 
