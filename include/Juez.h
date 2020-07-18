@@ -16,7 +16,7 @@ Correos electronicos: juan.manuel.hoyos@correounivalle.edu.co
 Clase: Juez
 Responsabilidad:
 -mostrar ganador
-Colaboracion: Ninguna.
+Colaboracion: tablero
 */
 #ifndef __CLASSJUEZ
 #define __CLASSJUEZ

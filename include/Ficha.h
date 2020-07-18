@@ -23,7 +23,7 @@ Responsabilidad:
 -puede comer una ficha
 -retorno habilitado
 -cambiar tipo
-Colaboracion: Ninguna.
+Colaboracion: tablero
 */
 #ifndef __CLASSFICHA
 #define __CLASSFICHA

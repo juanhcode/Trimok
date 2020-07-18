@@ -19,7 +19,7 @@ Responsabilidad:
 -visualizar marcador
 -obtener jugadores
 -salir
-Colaboracion: Ninguna.
+Colaboracion: tablero
 */
 #ifndef __CLASSTRIMOK
 #define __CLASSTRIMOK

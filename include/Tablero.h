@@ -23,7 +23,7 @@ Responsabilidad:
 -pos_X_Primera Ficha En Aparecer
 -retorno Habilitado
 -puede Hacer Retorno
-Colaboracion: Ninguna.
+Colaboracion: jugador juez ficha trimok
 */
 #include "Ficha.h"
 #include <iostream> 

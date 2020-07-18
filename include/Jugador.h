@@ -21,7 +21,7 @@ Responsabilidad:
 -seleccionar ficha posicion
 -agregar dicha posicion 
 -agregar ficha 
-Colaboracion: Ninguna.
+Colaboracion:tablero
 */
 #include "Ficha.h"
 #include "Tablero.h"
