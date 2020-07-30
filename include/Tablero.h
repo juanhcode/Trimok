@@ -25,9 +25,8 @@ Responsabilidad:
 -puede Hacer Retorno
 Colaboracion: jugador juez ficha trimok
 */
-#include "Ficha.h"
-#include <iostream> 
 #include <vector>
+#include "Ficha.h"
 class Tablero
 {
 private:
