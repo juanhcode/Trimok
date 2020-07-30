@@ -20,14 +20,16 @@ Colaboracion: tablero
 */
 #ifndef __CLASSJUEZ
 #define __CLASSJUEZ
-class juez
+#include <iostream>
+using namespace std;
+class Juez
 {
 private:
     
 public:
-    juez();
+    Juez();
     string mostrarGanador(int puntajeFichaNegra, int puntajeFichaBlanca);
-    ~juez();
+    ~Juez();
 };
 #endif // __CLASJUEZ
 

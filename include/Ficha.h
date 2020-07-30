@@ -35,14 +35,14 @@ class Ficha
 private:
 	string blanco;
 	string negro;
-    int Posx;
-    int Posy; 
+    int x;
+    int y; 
     int tipo;
     int color;
 
 public:
     Ficha();
-    Ficha(int color, int tipo, int Posy, int Posx);
+    Ficha(int dColor, int dTipo, int dPosy, int dPosx);
     int darColor(string blanco,string negro);
     int darTipo();
     int darPosicionY();
@@ -52,7 +52,6 @@ public:
     int puedeComerUnaFicha();
     int retornoHabilitado();
     void cambiarTipo();
-   
     ~Ficha();
 
 };

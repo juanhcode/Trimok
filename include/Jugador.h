@@ -30,16 +30,14 @@ Colaboracion:tablero
 class Jugador
 {
 private:
-    /* data */
+
 public:
-    Jugador(/* args */);
+    Jugador();
     int moverFicha(Ficha FichaN,Ficha FichaB,int posicion);
     int capturarFichasDelOpositor(Ficha FichaN,Ficha FichaB,Tablero Tablerito);
     int movimientoEspecial(Ficha,Tablero Tablerito);
     bool seleccionar(Ficha FichaN,Ficha FichaB, int Posicion);
     bool agregarFicha(Ficha FichaN,Ficha FichaB,int posicion);
-   
-
     ~Jugador();
 };
 #endif // __CLASJUGADOR
