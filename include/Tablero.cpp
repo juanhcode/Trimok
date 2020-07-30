@@ -1,6 +1,4 @@
-#include <iostream>
-
-#include "./Tablero.h"
+#include "Tablero.h"
 
 bool Tablero::hayUnaFichaEnUnaPosicion(int x, int y){
 
@@ -11,7 +9,7 @@ bool Tablero::esVaciaUnaPosicion(int x,int y){
 
 }
 
-bool Tablero::puedeMoverFicha(int posX,int posY){
+bool Tablero::puedeMoverseFicha(int x,int y){
 
 
 }
@@ -20,11 +18,11 @@ void Tablero::moverFicha(int actualX,int actualY,int nuevaX,int nuevaY){
 
 }
 
-int Tablero::posYPrimeraFichaEnAaparecer(int color){
+int Tablero::pos_Y_PrimeraFichaEnAparecer(int color){
 
 }
 
-int Tablero::posXPrimeraFichaEnAaparecer(int color){
+int Tablero::pos_X_PrimeraFichaEnAparecer(int color){
 
 }
 
