@@ -3,6 +3,7 @@
 using namespace std;
 Trimok::Trimok()
 {
+	Ficha Tijera(1,3,0,4);
 }
 
 Trimok::~Trimok()
