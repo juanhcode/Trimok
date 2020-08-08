@@ -35,7 +35,7 @@ public:
     void seleccionarOpcion();
     void mostrarDatos();   //Nueva Funcion
     void escogerJugador()
-;    void visualizar();
+;   void visualizar();
     int cambiarPuntaje (int puntaje, int tablero);
     void visualizarMarcador (int puntajeFichaNegra, int puntajeFichaBlanca);
     int obtenerJugadores(int jugador1, int jugador2);

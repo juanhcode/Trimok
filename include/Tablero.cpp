@@ -1,5 +1,12 @@
 #include "Tablero.h"
 
+Tablero::Tablero(){
+
+}
+
+Tablero::~Tablero(){
+    
+}
 bool Tablero::hayUnaFichaEnUnaPosicion(int x, int y){
 
 }

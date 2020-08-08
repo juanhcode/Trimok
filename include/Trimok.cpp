@@ -53,16 +53,7 @@ void Trimok::visualizar()
 
 void Trimok::mostrarDatos()
 {
-	cout << "Nombre: " << endl;
-	cout << "Apellido: " << endl;
-	cout << "Sexo: " << endl;
-	cout << "Estado:  " << endl;
-	cout << "Auxilio conyugal: " << endl;
-	cout << "Auxilio Educativo: " << endl;
-	cout << "Fecha nacimiento: " << endl;
-	cout << "Fecha ingreso: " << endl;
-	cout << "Salario: " << endl;
-	cout << endl;
+	
 }
 
 void Trimok::escogerJugador()

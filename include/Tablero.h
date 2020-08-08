@@ -30,7 +30,7 @@ Colaboracion: jugador juez ficha trimok
 class Tablero
 {
 private:
-    vector<Ficha> Tablerito;
+    std::vector<std::vector<Ficha>>tablerito;
 public:
     Tablero();
     bool hayUnaFichaEnUnaPosicion(int x, int y);
