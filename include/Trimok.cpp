@@ -3,7 +3,8 @@
 using namespace std;
 Trimok::Trimok()
 {
-	Ficha Tijera(1,3,0,4);
+	Ficha Tijera(1, 3, 0, 4);
+	Tablero tablerito();
 }
 
 Trimok::~Trimok()
@@ -30,17 +31,24 @@ void Trimok::visualizar()
 
 	do
 	{
-		//mostrarDatosPersonales();
-		//mostrarCalculos();
 		seleccionarOpcion();
 		{
 			switch (opcion)
 			{
 			case 1:
-				cout << "Reglas" << endl;
-				cin>>opcion;
-				break;
+				cout << "Jugador Blanco" << endl;
+				cout << "tijeras blancas toman el papel negro " << endl;
+				cout << "papel blanco toma la roca negra" << endl;
+				cout << "la roca blanca toman tijeras negras" << endl;
+				cout << "---------------------------------------------" << endl;
 
+				cout << "Jugador Negro" << endl;
+				cout << "tijeras negras toman el papel blanco" << endl;
+				cout << "papel negro toma la roca blanca" << endl;
+				cout << "la roca negra toman tijeras blancas" << endl;
+				cout << "---------------------------------------------" << endl;
+				system("pause");
+				break;
 			case 2:
 				escogerJugador();
 				break;
@@ -53,11 +61,13 @@ void Trimok::visualizar()
 
 void Trimok::mostrarDatos()
 {
-	
+	cout<<"Jugador Blanco: "<<endl;                                 cout<<"Jugador Negro: "<<endl;
+	cout<<"Fichas: "<<endl;                                         cout<<"Fichas: "<<endl;  
 }
 
-void Trimok::escogerJugador()
+void Trimok::seleccionJugador()
 {
+
 	cout << "Escoge el Jugador" << endl;
 	cout << "1 - Jugador Blanco" << endl;
 	cout << "2 - Jugador Negro" << endl;
@@ -67,20 +77,26 @@ void Trimok::escogerJugador()
 		cout << "Introduzca Opcion: " << endl;
 		cin >> opcion;
 	} while (!((opcion >= 1) && (opcion <= 3)));
-
+}
+void Trimok::escogerJugador()
+{
 	do
 	{
-		switch (opcion)
+		seleccionJugador();
 		{
-		case 1:
-			/* code */
-			break;
-		case 2:
-			/* code */
-			break;
+			switch (opcion)
+			{
+			case 1:
+				mostrarDatos();
+				break;
+			case 2:
+				/* code */
+				break;
 
-		default:
-			break;
+			default:
+				break;
+			}
+			system("cls");
 		}
 	} while (opcion != 3);
 }

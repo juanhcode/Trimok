@@ -29,13 +29,15 @@ class Trimok
 {
 private:
     int opcion;
+    Tablero e();
 public:
     Trimok();
     ~Trimok();
     void seleccionarOpcion();
     void mostrarDatos();   //Nueva Funcion
-    void escogerJugador()
-;   void visualizar();
+    void seleccionJugador(); //Nueva Funcion
+    void escogerJugador();
+    void visualizar();
     int cambiarPuntaje (int puntaje, int tablero);
     void visualizarMarcador (int puntajeFichaNegra, int puntajeFichaBlanca);
     int obtenerJugadores(int jugador1, int jugador2);

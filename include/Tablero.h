@@ -33,6 +33,7 @@ private:
     std::vector<std::vector<Ficha>>tablerito;
 public:
     Tablero();
+    void mostrarTablero();
     bool hayUnaFichaEnUnaPosicion(int x, int y);
     bool esVaciaUnaPosicion(int x, int y);
     bool puedeMoverseFicha(int x, int y);

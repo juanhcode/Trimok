@@ -45,7 +45,14 @@ bool Ficha::unEspacioVacio(){
 }
 
 bool Ficha::puedeMoverse(){
-    
+    if ((color = 0) and (tipo=0))
+    {
+        true;
+    }
+    else
+    {
+        false;
+    }
 }
 
 int Ficha::puedeComerUnaFicha(Ficha fichaAComer){
