@@ -61,8 +61,7 @@ void Trimok::visualizar()
 
 void Trimok::mostrarDatos()
 {
-	cout<<"Jugador Blanco: "<<endl;                                 cout<<"Jugador Negro: "<<endl;
-	cout<<"Fichas: "<<endl;                                         cout<<"Fichas: "<<endl;  
+	  
 }
 
 void Trimok::seleccionJugador()

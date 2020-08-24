@@ -39,7 +39,7 @@ private:
     int tipo;// 1 = Piedra, 2 = Papel, 3 = Tijera, 4 = vacio
     int x;
     int y;
-
+    
 public:
     Ficha();
     Ficha(int dColor, int dTipo, int dPosy, int dPosx);

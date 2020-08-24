@@ -13,53 +13,57 @@ Tablero::~Tablero()
 void Tablero::mostrarTablero()
 {
 
-    /*for (int i = 0; i < 6; i++)
+    for (int i = 0; i < 6; i++)
     {
-        vector<Ficha> aux;
+        vector<Ficha>fichas;
         for (int j = 0; j < 6; j++)
         {
             if ((i == 0 and j == 0) or (i == 1 and j == 0) or (i == 0 and j == 3) or (i == 1 and j == 3))
             {
-                aux.push_back(); //Tijera Negra
+               //Tijera Negra
             }
             else if ((i == 0 and j == 1) or (i == 1 and j == 1) or (i == 0 and j == 4) or (i == 1 and j == 4))
             {
-                aux.push_back(); //Papel Negra
+                //Papel Negra
             }
             else if ((i == 0 and j == 2) or (i == 1 and j == 2) or (i == 0 and j == 5) or (i == 1 and j == 5))
             {
-                aux.push_back(); //Roca Negra
+                //Roca Negra
             }
             //Ficha Blanca
             else if ((i == 4 and j == 0) or (i == 5 and j == 0) or (i == 4 and j == 3) or (i == 5 and j == 3))
             {
-                aux.push_back(); //Tijera Blanca
+                //Tijera Blanca
             }
             else if ((i == 4 and j == 1) or (i == 5 and j == 1) or (i == 4 and j == 4) or (i == 5 and j == 4))
             {
-                aux.push_back(); //Papel Blanco
+                //Papel Blanco
             }
             else if ((i == 4 and j == 2) or (i == 5 and j == 2) or (i == 4 and j == 5) or (i == 5 and j == 5))
             {
-                aux.push_back(); //Roca Negra
+                //Roca Negra
             }
             else
             {
-                aux.push_back();
+                
             }
+            tablerito.push_back(fichas);
         }
-        tablerito.push_back(aux);
+        
     }
 
-    for (int i = 0; i < tablerito.size(); i++)
+    /*for (int i = 0; i < tablerito.size(); i++)
     {
         for (int j = 0; j < tablerito[i].size(); j++)
         {
-            cout << tablerito[i][j] << " | ";
+            cout << tablerito[i][j] << " | "<<endl;
         }
         cout << endl;
     }*/
 }
+
+
+
 bool Tablero::hayUnaFichaEnUnaPosicion(int x, int y)
 {
 }
