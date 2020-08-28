@@ -31,8 +31,10 @@ class Tablero
 {
 private:
     std::vector<std::vector<Ficha>>tablerito;
+    //Ficha tablero [6][6];
 public:
     Tablero();
+    void inicializarTablero();
     void mostrarTablero();
     bool hayUnaFichaEnUnaPosicion(int x, int y);
     bool esVaciaUnaPosicion(int x, int y);

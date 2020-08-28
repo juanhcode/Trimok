@@ -33,8 +33,6 @@ using namespace std;
 class Ficha
 {
 private:
-	//string blanco;
-	//string negro;
     int color;// 1 = blanco, 2 = negro, 3 = vacio
     int tipo;// 1 = Piedra, 2 = Papel, 3 = Tijera, 4 = vacio
     int x;
@@ -44,6 +42,8 @@ public:
     Ficha();
     Ficha(int dColor, int dTipo, int dPosy, int dPosx);
     int darColor();
+    string darFicha(); //R
+    string setFicha(string ficha); //R
     int darTipo();
     int darPosicionY();
     int darPosicionX();

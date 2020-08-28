@@ -21,9 +21,24 @@ int Ficha::darColor(){
 }
 
 int Ficha::darTipo(){
-    
     return tipo;
 }
+
+/*string Ficha::darFicha(){
+    return ficha;
+}
+
+string Ficha::setFicha(string ficha){
+    this->ficha = "";
+    for (int i = 0; i < ficha.length(); i++)
+    {
+        this->ficha +=toupper(ficha[i]);
+    }
+    
+    this->ficha = ficha;
+
+    return this->ficha;
+}*/
 
 int Ficha::darPosicionY(){
     return y;

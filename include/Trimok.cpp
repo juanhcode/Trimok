@@ -3,8 +3,7 @@
 using namespace std;
 Trimok::Trimok()
 {
-	Ficha Tijera(1, 3, 0, 4);
-	Tablero tablerito();
+	
 }
 
 Trimok::~Trimok()
@@ -37,15 +36,15 @@ void Trimok::visualizar()
 			{
 			case 1:
 				cout << "Jugador Blanco" << endl;
-				cout << "tijeras blancas toman el papel negro " << endl;
-				cout << "papel blanco toma la roca negra" << endl;
-				cout << "la roca blanca toman tijeras negras" << endl;
+				cout << "Tijeras blancas toman el papel negro " << endl;
+				cout << "Papel blanco toma la roca negra" << endl;
+				cout << "La roca blanca toman tijeras negras" << endl;
 				cout << "---------------------------------------------" << endl;
 
 				cout << "Jugador Negro" << endl;
-				cout << "tijeras negras toman el papel blanco" << endl;
-				cout << "papel negro toma la roca blanca" << endl;
-				cout << "la roca negra toman tijeras blancas" << endl;
+				cout << "Tijeras negras toman el papel blanco" << endl;
+				cout << "Papel negro toma la roca blanca" << endl;
+				cout << "La roca negra toman tijeras blancas" << endl;
 				cout << "---------------------------------------------" << endl;
 				system("pause");
 				break;
@@ -59,23 +58,20 @@ void Trimok::visualizar()
 	} while (opcion != 3);
 }
 
-void Trimok::mostrarDatos()
-{
-	  
-}
-
 void Trimok::seleccionJugador()
 {
 
 	cout << "Escoge el Jugador" << endl;
 	cout << "1 - Jugador Blanco" << endl;
 	cout << "2 - Jugador Negro" << endl;
-	cout << "3 - Volver al menu" << endl;
+	cout << "3 - //" << endl;
+	cout << "4 - Menu" << endl;
+
 	do
 	{
 		cout << "Introduzca Opcion: " << endl;
 		cin >> opcion;
-	} while (!((opcion >= 1) && (opcion <= 3)));
+	} while (!((opcion >= 1) && (opcion <= 4)));
 }
 void Trimok::escogerJugador()
 {
@@ -87,6 +83,9 @@ void Trimok::escogerJugador()
 			{
 			case 1:
 				mostrarDatos();
+				e.inicializarTablero();
+				e.mostrarTablero();
+				system("pause");
 				break;
 			case 2:
 				/* code */
@@ -97,5 +96,23 @@ void Trimok::escogerJugador()
 			}
 			system("cls");
 		}
-	} while (opcion != 3);
+	} while (opcion != 4);
 }
+
+void Trimok::mostrarDatos()
+{
+	cout<<"Jugador Blanco"<<"\t";                                              cout<<"\tJugador Negro"<<endl;
+	cout<<"Ficha:"<<"\t"<<"\t";													   cout<<"\tFicha:"<<endl;
+}
+
+/*void Trimok::play(){
+
+	string fichaActual;
+	string fichaMovida;
+	cout<<"ingresar la ficha que desee mover: "<<endl;
+	cin>>fichaActual;
+	cout<<fichaActual<<endl;
+	fichas.setFicha(fichaActual);
+	fichaActual=fichas.darFicha();
+	cout<<fichaActual<<endl;
+}*/

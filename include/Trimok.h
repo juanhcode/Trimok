@@ -29,7 +29,8 @@ class Trimok
 {
 private:
     int opcion;
-    Tablero e();
+    Tablero e;
+    Ficha fichas;
 public:
     Trimok();
     ~Trimok();
@@ -43,5 +44,6 @@ public:
     int obtenerJugadores(int jugador1, int jugador2);
     int empezarJuego(Tablero Tablerito,Jugador Jugador1,Jugador Jugador2,Ficha FichaN,Ficha FichaB);
     bool salir();
+    void play(); //R
 };
 #endif // __CLASTRIMOK
