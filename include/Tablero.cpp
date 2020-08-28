@@ -97,10 +97,21 @@ bool Tablero::hayUnaFichaEnUnaPosicion(int x, int y)
 
 bool Tablero::esVaciaUnaPosicion(int x, int y)
 {
+    if (x=0, y=0) true;
+    {
+     false;
+    }
+    
+  
 }
 
 bool Tablero::puedeMoverseFicha(int x, int y)
 {
+    if ( esVaciaUnaPosicion( x,  y)) true;
+    {
+        false;
+    }
+    
 }
 
 void Tablero::moverFicha(int actualX, int actualY, int nuevaX, int nuevaY)
