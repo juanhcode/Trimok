@@ -29,6 +29,7 @@ class Trimok
 {
 private:
     int opcion;
+    int opcionParaEljugador;
     Tablero e;
     Ficha fichas;
 public:

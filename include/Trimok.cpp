@@ -3,7 +3,7 @@
 using namespace std;
 Trimok::Trimok()
 {
-	
+	opcionParaEljugador = 0;
 }
 
 Trimok::~Trimok()
@@ -64,14 +64,13 @@ void Trimok::seleccionJugador()
 	cout << "Escoge el Jugador" << endl;
 	cout << "1 - Jugador Blanco" << endl;
 	cout << "2 - Jugador Negro" << endl;
-	cout << "3 - //" << endl;
-	cout << "4 - Menu" << endl;
+	cout << "3 - Menu" << endl;
 
 	do
 	{
 		cout << "Introduzca Opcion: " << endl;
-		cin >> opcion;
-	} while (!((opcion >= 1) && (opcion <= 4)));
+		cin >> opcionParaEljugador;
+	} while (!((opcionParaEljugador >= 1) && (opcionParaEljugador <= 3)));
 }
 void Trimok::escogerJugador()
 {
@@ -79,7 +78,7 @@ void Trimok::escogerJugador()
 	{
 		seleccionJugador();
 		{
-			switch (opcion)
+			switch (opcionParaEljugador)
 			{
 			case 1:
 				mostrarDatos();
@@ -88,7 +87,6 @@ void Trimok::escogerJugador()
 				system("pause");
 				break;
 			case 2:
-				/* code */
 				break;
 
 			default:
@@ -96,7 +94,7 @@ void Trimok::escogerJugador()
 			}
 			system("cls");
 		}
-	} while (opcion != 4);
+	} while (opcionParaEljugador != 3);
 }
 
 void Trimok::mostrarDatos()
