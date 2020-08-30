@@ -42,8 +42,6 @@ public:
     Ficha();
     Ficha(int dColor, int dTipo, int dPosy, int dPosx);
     int darColor();
-    string darFicha(); //R
-    string setFicha(string ficha); //R
     int darTipo();
     int darPosicionY();
     int darPosicionX();
