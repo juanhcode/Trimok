@@ -99,18 +99,80 @@ void Trimok::escogerJugador()
 
 void Trimok::mostrarDatos()
 {
-	cout<<"Jugador Blanco"<<"\t";                                              cout<<"\tJugador Negro"<<endl;
-	cout<<"Ficha:"<<"\t"<<"\t";													   cout<<"\tFicha:"<<endl;
+	cout << "Jugador Blanco"
+		 << "\t";
+	cout << "\tJugador Negro" << endl;
+	cout << "Ficha:"
+		 << "\t"
+		 << "\t";
+	cout << "\tFicha:" << endl;
 }
 
-/*void Trimok::play(){
+void Trimok::play()
+{
 
-	string fichaActual;
-	string fichaMovida;
-	cout<<"ingresar la ficha que desee mover: "<<endl;
-	cin>>fichaActual;
-	cout<<fichaActual<<endl;
-	fichas.setFicha(fichaActual);
-	fichaActual=fichas.darFicha();
-	cout<<fichaActual<<endl;
-}*/
+	mostrarDatos();
+
+	while (2>0)
+	{
+		e.inicializarTablero();
+		e.mostrarTablero();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

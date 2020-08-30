@@ -92,12 +92,14 @@ void Tablero::mostrarTablero()
 
 bool Tablero::hayUnaFichaEnUnaPosicion(int x, int y)
 {
-    //si la casilla es igual a B V o N entonces la posicion esta ocupada en la posicion x y 
+    //si la casilla es igual a B V o N entonces la posicion esta ocupada en la posicion x y
+    
 }
 
 bool Tablero::esVaciaUnaPosicion(int x, int y)
 {
-     // si la casilla esta ocupada es false si no es true
+    // si la casilla esta ocupada es false si no es true
+
 }
 
 bool Tablero::puedeMoverseFicha(int x, int y)
@@ -107,13 +109,10 @@ bool Tablero::puedeMoverseFicha(int x, int y)
 
 void Tablero::moverFicha(int actualX, int actualY, int nuevaX, int nuevaY)
 {
-    int f;
-    int c;
+    nuevaX = actualX;
+    nuevaY = actualY;
 
-    cout << "Digite la fila" << endl;
-    cin >> f;
-    cout << "Digite la Columna" << endl;
-    cin >> c;
+    bool bMovidaPosible = false;
 }
 
 int Tablero::pos_Y_PrimeraFichaEnAparecer(int color)
@@ -127,25 +126,23 @@ int Tablero::pos_X_PrimeraFichaEnAparecer(int color)
 
 Ficha Tablero::darFicha(int x, int y)
 {
-    
 }
 
 bool Tablero::retornoHabilitado(int x, int y)
 {
-    //si Bb , Nb o Vb ocupan i = 6 true si no false.  
+    //si Bb , Nb o Vb ocupan i = 6 true si no false.
 }
 
 bool Tablero::puedeHacerRetorno(int actualx, int actualy, int nuevax, int nuevay)
 {
     /*para hacer el retorno se nesecita mirar si la ficha que llega esta sola en su fila correspondiente
     en ese caso se podra hacer y el retorno */
-    
 
     int i = 0;
     int j = 0;
-    if ( nuevax)
+    if (nuevax)
     {
-        if ( nuevay)
+        if (nuevay)
         {
             tablerito[i][j];
             i++;
