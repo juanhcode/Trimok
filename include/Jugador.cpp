@@ -12,7 +12,7 @@ int Jugador::moverFicha(Ficha FichaN,Ficha FichaB,int posicion){
 }
 
 int Jugador::capturarFichasDelOpositor(Ficha FichaN,Ficha FichaB,Tablero Tablerito){
-
+    
 }
 
 int Jugador::movimientoEspecial(Ficha,Tablero Tablerito){

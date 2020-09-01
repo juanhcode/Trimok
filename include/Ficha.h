@@ -50,6 +50,7 @@ public:
     int puedeComerUnaFicha(Ficha fichaAComer);
     int retornoHabilitado();
     void cambiarTipo(int nuevoTipo);
+    bool fichaExiste(string posicion);
     ~Ficha();
 
 };

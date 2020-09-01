@@ -74,6 +74,7 @@ void Trimok::seleccionJugador()
 }
 void Trimok::escogerJugador()
 {
+
 	do
 	{
 		seleccionJugador();

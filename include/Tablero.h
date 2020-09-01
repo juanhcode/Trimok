@@ -37,13 +37,15 @@ public:
     void inicializarTablero();
     void mostrarTablero();
     bool hayUnaFichaEnUnaPosicion(int x, int y);
-    bool esVaciaUnaPosicion(int x, int y);
+    bool esVaciaUnaPosicion(int x, string y);
+    int verificarPosicion(int x, char y);
     bool puedeMoverseFicha(int x, int y);
-    void moverFicha(int actualX, int actualY, int nuevaX, int nuevaY);
+    void moverFicha(string cordenadaNueva,string cordenadaActual);
     int pos_Y_PrimeraFichaEnAparecer(int color);
     int pos_X_PrimeraFichaEnAparecer(int color);
     Ficha darFicha(int x,int y);
     bool retornoHabilitado(int x, int y);
     bool puedeHacerRetorno(int actualX, int actualY, int nuevaX, int nuevaY);
+    void borrarFicha(string cordenada);
     ~Tablero();
 };

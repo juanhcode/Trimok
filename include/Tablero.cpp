@@ -1,8 +1,8 @@
 #include "Tablero.h"
 #include <iostream>
 #include <vector>
+#include <string.h>
 using namespace std;
-
 Tablero::Tablero()
 {
 }
@@ -10,7 +10,6 @@ Tablero::Tablero()
 Tablero::~Tablero()
 {
 }
-
 void Tablero::inicializarTablero()
 {
     tablerito.clear(); //Limpiar
@@ -72,6 +71,7 @@ void Tablero::mostrarTablero()
     {
         for (int j = 0; j < tablerito.size(); j++)
         {
+
             if (tablerito[i][j].darColor() == 1)
             {
                 mensaje = "B";
@@ -84,6 +84,7 @@ void Tablero::mostrarTablero()
             {
                 mensaje = "V";
             }
+
             cout << mensaje << tablerito[i][j].darTipo() << " | ";
         }
         cout << endl;
@@ -92,14 +93,57 @@ void Tablero::mostrarTablero()
 
 bool Tablero::hayUnaFichaEnUnaPosicion(int x, int y)
 {
-    //si la casilla es igual a B V o N entonces la posicion esta ocupada en la posicion x y
-    
+    //si la casilla es igual a B o N entonces la posicion esta ocupada en la posicion x y
 }
 
-bool Tablero::esVaciaUnaPosicion(int x, int y)
+bool Tablero::esVaciaUnaPosicion(int x, string y)
 {
-    // si la casilla esta ocupada es false si no es true
+    string columna = "ABCDEF";
+    int posicionColumna;
 
+    for (int i = 0; i < columna.length(); i++)
+    {
+        /*if (y == columna[i])
+        {
+            posicionColumna = i;
+        }*/
+    }
+
+    for (int i = 0; i < tablerito.size(); i++)
+    {
+        for (int j = 0; j < tablerito.size(); j++)
+        {
+            if (tablerito[i][j].darTipo() == 4)
+            {
+                return true;
+            }
+        }
+    }
+    //1 = Piedra, 2 = Papel, 3 = Tijera, 4 = vacio
+    //cout << tablerito[0][0].darTipo() << "es" << endl;
+    return false;
+}
+
+int Tablero::verificarPosicion(int x, char y)
+{
+
+    char columna[] = "ABCDEF";
+    int posicionColumna;
+
+    for (int i = 0; i < strlen(columna); i++)
+    {
+        if (columna[i] == y)
+        {
+            posicionColumna = i;
+        }
+    }
+    return posicionColumna;
+}
+
+void Tablero::borrarFicha(string cordenada)
+{
+    string x = "ABCDEF";
+    string y = "123456";
 }
 
 bool Tablero::puedeMoverseFicha(int x, int y)
@@ -107,12 +151,43 @@ bool Tablero::puedeMoverseFicha(int x, int y)
     //si se cumple con las condiciones se puede mover la ficha
 }
 
-void Tablero::moverFicha(int actualX, int actualY, int nuevaX, int nuevaY)
+void Tablero::moverFicha(string cordenadaNueva, string cordenadaActual)
 {
-    nuevaX = actualX;
-    nuevaY = actualY;
+    int posX;
+    int posY;
+    int posxNueva;
+    int posyNueva;
+    string x = "ABCDEF";
+    string y = "123456";
 
-    bool bMovidaPosible = false;
+    for (int i = 0; i < 6; i++)
+    {
+        if (cordenadaActual[0] == x[i])
+        {
+            posX = i;
+        }
+        if (cordenadaActual[1] == y[i])
+        {
+            posY = i;
+        }
+
+        if (cordenadaNueva[0] == x[i])
+        {
+            posxNueva = i;
+        }
+        if (cordenadaNueva[1] == y[i])
+        {
+            posyNueva = i;
+        }
+    }
+
+    /*for (int i = 0; i < tablerito.size(); i++)
+    {
+        for (int j = 0; j < tablerito.size(); j++)
+        {
+            
+        }
+    }*/
 }
 
 int Tablero::pos_Y_PrimeraFichaEnAparecer(int color)
@@ -136,18 +211,5 @@ bool Tablero::retornoHabilitado(int x, int y)
 bool Tablero::puedeHacerRetorno(int actualx, int actualy, int nuevax, int nuevay)
 {
     /*para hacer el retorno se nesecita mirar si la ficha que llega esta sola en su fila correspondiente
-    en ese caso se podra hacer y el retorno */
-
-    int i = 0;
-    int j = 0;
-    if (nuevax)
-    {
-        if (nuevay)
-        {
-            tablerito[i][j];
-            i++;
-            j++;
-            Tablero::darFicha;
-        }
-    }
+    en ese caso se podra hacer  el retorno */
 }
