@@ -67,8 +67,10 @@ void Tablero::inicializarTablero()
 void Tablero::mostrarTablero()
 {
     string mensaje;
+    cout << "_________________________________" << endl;
     for (int i = 0; i < tablerito.size(); i++)
     {
+        cout<<6-i<<" | ";
         for (int j = 0; j < tablerito.size(); j++)
         {
 
@@ -84,11 +86,11 @@ void Tablero::mostrarTablero()
             {
                 mensaje = "V";
             }
-
             cout << mensaje << tablerito[i][j].darTipo() << " | ";
         }
-        cout << endl;
+        cout<<endl;
     }
+    cout << "    A    B    C    D    E    F" << endl;
 }
 
 bool Tablero::hayUnaFichaEnUnaPosicion(int x, int y)
@@ -157,37 +159,40 @@ void Tablero::moverFicha(string cordenadaNueva, string cordenadaActual)
     int posY;
     int posxNueva;
     int posyNueva;
+    int temporal;
     string x = "ABCDEF";
-    string y = "123456";
+    string y = "654321";
 
     for (int i = 0; i < 6; i++)
     {
         if (cordenadaActual[0] == x[i])
         {
             posX = i;
+            //cout << "Esta es la posicion actual de X: " << posX << endl;
         }
         if (cordenadaActual[1] == y[i])
         {
             posY = i;
+            //cout << "Esta es la posicion actual de Y: " << posY << endl;
         }
 
         if (cordenadaNueva[0] == x[i])
         {
             posxNueva = i;
+            //cout << "Esta es la  nueva posicion de X: " << posxNueva << endl;
         }
         if (cordenadaNueva[1] == y[i])
         {
             posyNueva = i;
+            //cout << "Esta es la  nueva posicion de y: " << posyNueva << endl;
         }
     }
-
-    /*for (int i = 0; i < tablerito.size(); i++)
-    {
-        for (int j = 0; j < tablerito.size(); j++)
-        {
-            
-        }
-    }*/
+    temporal = tablerito[posY][posX].darTipo();
+    //cout << "Esto es temporal" << temporal << endl;
+    tablerito[posY][posX].cambiarTipo(4); //quiere decir que la posicion actual queda vacia
+    tablerito[posyNueva][posxNueva].cambiarTipo(temporal);
+    mostrarTablero();
+    //Convertir a mayusculas tipo string
 }
 
 int Tablero::pos_Y_PrimeraFichaEnAparecer(int color)

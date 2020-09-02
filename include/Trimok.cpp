@@ -74,7 +74,7 @@ void Trimok::seleccionJugador()
 }
 void Trimok::escogerJugador()
 {
-
+	string posActual,posNueva;
 	do
 	{
 		seleccionJugador();
@@ -85,6 +85,12 @@ void Trimok::escogerJugador()
 				mostrarDatos();
 				e.inicializarTablero();
 				e.mostrarTablero();
+				system("pause");
+				cout<<"Ingrese la posicion actual"<<endl;
+				cin>>posActual;
+				cout<<"Ingrese la posicion que desee mover"<<endl;
+				cin>>posNueva;
+				e.moverFicha(posNueva,posActual);
 				system("pause");
 				break;
 			case 2:
