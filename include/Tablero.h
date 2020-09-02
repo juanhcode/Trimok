@@ -47,5 +47,6 @@ public:
     bool retornoHabilitado(int x, int y);
     bool puedeHacerRetorno(int actualX, int actualY, int nuevaX, int nuevaY);
     void borrarFicha(string cordenada);
+    bool reglas(string posicion);
     ~Tablero();
 };

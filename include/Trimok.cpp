@@ -85,7 +85,6 @@ void Trimok::escogerJugador()
 				mostrarDatos();
 				e.inicializarTablero();
 				e.mostrarTablero();
-				system("pause");
 				cout<<"Ingrese la posicion actual"<<endl;
 				cin>>posActual;
 				cout<<"Ingrese la posicion que desee mover"<<endl;

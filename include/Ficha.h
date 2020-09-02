@@ -33,25 +33,24 @@ using namespace std;
 class Ficha
 {
 private:
-    int color;// 1 = blanco, 2 = negro, 3 = vacio
-    int tipo;// 1 = Piedra, 2 = Papel, 3 = Tijera, 4 = vacio
+    int color;   // 1 = blanco, 2 = negro, 3 = vacio
+    string tipo; // R = ROCA, P = Papel, T = Tijera, "V" = vacio
     int x;
     int y;
-    
+
 public:
     Ficha();
-    Ficha(int dColor, int dTipo, int dPosy, int dPosx);
+    Ficha(int dColor, string dTipo, int dPosy, int dPosx);
     int darColor();
-    int darTipo();
+    string darTipo();
     int darPosicionY();
     int darPosicionX();
     bool unEspacioVacio();
     bool puedeMoverse();
     int puedeComerUnaFicha(Ficha fichaAComer);
     int retornoHabilitado();
-    void cambiarTipo(int nuevoTipo);
+    void cambiarTipo(string nuevoTipo);
     bool fichaExiste(string posicion);
     ~Ficha();
-
 };
 #endif // __CLASFICHA

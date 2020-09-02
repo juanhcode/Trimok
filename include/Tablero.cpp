@@ -22,17 +22,17 @@ void Tablero::inicializarTablero()
             {
                 if (j == 0 or j == 3)
                 {
-                    Ficha tijeraN(2, 3, 0, 0);
+                    Ficha tijeraN(2, "TN", 0, 0);
                     fichaActual.push_back(tijeraN);
                 }
                 else if (j == 1 or j == 4)
                 {
-                    Ficha papelN(2, 2, 0, 0);
+                    Ficha papelN(2, "PN", 0, 0);
                     fichaActual.push_back(papelN);
                 }
                 else if (j == 2 or j == 5)
                 {
-                    Ficha RocaN(2, 1, 0, 0);
+                    Ficha RocaN(2, "RN", 0, 0);
                     fichaActual.push_back(RocaN);
                 }
             }
@@ -40,23 +40,23 @@ void Tablero::inicializarTablero()
             {
                 if (j == 0 or j == 3)
                 {
-                    Ficha tijeraB(1, 3, 0, 0);
+                    Ficha tijeraB(1, "TB", 0, 0);
                     fichaActual.push_back(tijeraB);
                 }
                 else if (j == 1 or j == 4)
                 {
-                    Ficha papelB(1, 2, 0, 0);
+                    Ficha papelB(1, "PB", 0, 0);
                     fichaActual.push_back(papelB);
                 }
                 else if (j == 2 or j == 5)
                 {
-                    Ficha RocaB(1, 1, 0, 0);
+                    Ficha RocaB(1, "RB", 0, 0);
                     fichaActual.push_back(RocaB);
                 }
             }
             else
             {
-                Ficha vacia(3, 4, 0, 0);
+                Ficha vacia(3, "  ", 0, 0);
                 fichaActual.push_back(vacia);
             }
         }
@@ -70,11 +70,11 @@ void Tablero::mostrarTablero()
     cout << "_________________________________" << endl;
     for (int i = 0; i < tablerito.size(); i++)
     {
-        cout<<6-i<<" | ";
+        cout << 6 - i << " | ";
         for (int j = 0; j < tablerito.size(); j++)
         {
 
-            if (tablerito[i][j].darColor() == 1)
+            /*if (tablerito[i][j].darColor() == 1)
             {
                 mensaje = "B";
             }
@@ -85,10 +85,10 @@ void Tablero::mostrarTablero()
             else
             {
                 mensaje = "V";
-            }
+            }*/
             cout << mensaje << tablerito[i][j].darTipo() << " | ";
         }
-        cout<<endl;
+        cout << endl;
     }
     cout << "    A    B    C    D    E    F" << endl;
 }
@@ -111,7 +111,7 @@ bool Tablero::esVaciaUnaPosicion(int x, string y)
         }*/
     }
 
-    for (int i = 0; i < tablerito.size(); i++)
+    /*for (int i = 0; i < tablerito.size(); i++)
     {
         for (int j = 0; j < tablerito.size(); j++)
         {
@@ -120,7 +120,7 @@ bool Tablero::esVaciaUnaPosicion(int x, string y)
                 return true;
             }
         }
-    }
+    }*/
     //1 = Piedra, 2 = Papel, 3 = Tijera, 4 = vacio
     //cout << tablerito[0][0].darTipo() << "es" << endl;
     return false;
@@ -159,7 +159,7 @@ void Tablero::moverFicha(string cordenadaNueva, string cordenadaActual)
     int posY;
     int posxNueva;
     int posyNueva;
-    int temporal;
+    string temporal;
     string x = "ABCDEF";
     string y = "654321";
 
@@ -189,11 +189,15 @@ void Tablero::moverFicha(string cordenadaNueva, string cordenadaActual)
     }
     temporal = tablerito[posY][posX].darTipo();
     //cout << "Esto es temporal" << temporal << endl;
-    tablerito[posY][posX].cambiarTipo(4); //quiere decir que la posicion actual queda vacia
+    tablerito[posY][posX].cambiarTipo("  "); //quiere decir que la posicion actual queda vacia
     tablerito[posyNueva][posxNueva].cambiarTipo(temporal);
     mostrarTablero();
-    //Convertir a mayusculas tipo string
 }
+
+bool Tablero::reglas(string posicion){
+    
+}
+
 
 int Tablero::pos_Y_PrimeraFichaEnAparecer(int color)
 {
@@ -203,6 +207,8 @@ int Tablero::pos_Y_PrimeraFichaEnAparecer(int color)
 int Tablero::pos_X_PrimeraFichaEnAparecer(int color)
 {
 }
+
+
 
 Ficha Tablero::darFicha(int x, int y)
 {

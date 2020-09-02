@@ -1,7 +1,7 @@
 #include "Ficha.h"
 #include <iostream>
 
-Ficha::Ficha(int dColor, int dTipo, int dPosy, int dPosx)
+Ficha::Ficha(int dColor, string dTipo, int dPosy, int dPosx)
 {
     color = dColor,
     tipo = dTipo,
@@ -22,7 +22,7 @@ int Ficha::darColor()
     return color;
 }
 
-int Ficha::darTipo()
+string Ficha::darTipo()
 {
     return tipo;
 }
@@ -39,14 +39,14 @@ int Ficha::darPosicionX()
 
 bool Ficha::unEspacioVacio()
 {
-    if (tipo = 4)
+    /*if (tipo = 4)
     {
         true;
     }
     else
     {
         false;
-    }
+    }*/
 }
 
 bool Ficha::fichaExiste(string posicion)
@@ -82,14 +82,14 @@ bool Ficha::fichaExiste(string posicion)
 
 bool Ficha::puedeMoverse()
 {
-    if ((color = 0) and (tipo = 0))
+    /*if ((color = 0) and (tipo = 0))
     {
         true;
     }
     else
     {
         false;
-    }
+    }*/
 }
 
 int Ficha::puedeComerUnaFicha(Ficha fichaAComer)
@@ -100,7 +100,7 @@ int Ficha::retornoHabilitado()
 {
 }
 
-void Ficha::cambiarTipo(int nuevoTipo)
+void Ficha::cambiarTipo(string nuevoTipo)
 {
     tipo = nuevoTipo;
 }
