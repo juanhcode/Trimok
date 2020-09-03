@@ -30,8 +30,7 @@ Colaboracion: jugador juez ficha trimok
 class Tablero
 {
 private:
-    std::vector<std::vector<Ficha>>tablerito;
-    //Ficha tablero [6][6];
+    std::vector<std::vector<Ficha>> tablerito;
 public:
     Tablero();
     void inicializarTablero();
@@ -40,13 +39,13 @@ public:
     bool esVaciaUnaPosicion(int x, string y);
     int verificarPosicion(int x, char y);
     bool puedeMoverseFicha(int x, int y);
-    void moverFicha(string cordenadaNueva,string cordenadaActual);
+    bool moverFicha(string cordenadaNueva, string cordenadaActual,char colordeFicha);
     int pos_Y_PrimeraFichaEnAparecer(int color);
     int pos_X_PrimeraFichaEnAparecer(int color);
-    Ficha darFicha(int x,int y);
+    Ficha darFicha(int x, int y);
     bool retornoHabilitado(int x, int y);
     bool puedeHacerRetorno(int actualX, int actualY, int nuevaX, int nuevaY);
     void borrarFicha(string cordenada);
-    bool reglas(string posicion);
+    bool reglas(string cordenadaNueva, string cordenadaActual,char colordeFicha);
     ~Tablero();
 };

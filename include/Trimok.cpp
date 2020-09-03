@@ -74,7 +74,6 @@ void Trimok::seleccionJugador()
 }
 void Trimok::escogerJugador()
 {
-	string posActual,posNueva;
 	do
 	{
 		seleccionJugador();
@@ -85,11 +84,7 @@ void Trimok::escogerJugador()
 				mostrarDatos();
 				e.inicializarTablero();
 				e.mostrarTablero();
-				cout<<"Ingrese la posicion actual"<<endl;
-				cin>>posActual;
-				cout<<"Ingrese la posicion que desee mover"<<endl;
-				cin>>posNueva;
-				e.moverFicha(posNueva,posActual);
+				play();
 				system("pause");
 				break;
 			case 2:
@@ -116,69 +111,33 @@ void Trimok::mostrarDatos()
 
 void Trimok::play()
 {
+	bool bandera;
+	bool ganador = true;
+	string posActual, posNueva;
 
-	mostrarDatos();
-
-	while (2>0)
+	while (ganador)
 	{
-		e.inicializarTablero();
-		e.mostrarTablero();
+		bandera = false;
+		while (bandera != true)
+		{
+			while (bandera != true)
+			{
+				cout << "Ingrese la Posicion del Jugador 1" << endl;
+				cin >> posActual;
+				cout << "Ingrese la Posicion que desee mover Jugador 1" << endl;
+				cin >> posNueva;
+				bandera = e.moverFicha(posNueva, posActual,'B');
+			}
+		}
+		bandera = false;
+		while (bandera != true)
+		{
+
+			cout << "Ingrese la Posicion actual Jugador 2" << endl;
+			cin >> posActual;
+			cout << "Ingrese la Posicion que desee mover Jugador 2" << endl;
+			cin >> posNueva;
+			bandera = e.moverFicha(posNueva, posActual,'N');
+		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

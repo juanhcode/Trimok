@@ -2,7 +2,12 @@
 #include <iostream>
 #include <vector>
 #include <string.h>
+#include <math.h>
 using namespace std;
+int posX;
+int posY;
+int posxNueva;
+int posyNueva;
 Tablero::Tablero()
 {
 }
@@ -153,51 +158,152 @@ bool Tablero::puedeMoverseFicha(int x, int y)
     //si se cumple con las condiciones se puede mover la ficha
 }
 
-void Tablero::moverFicha(string cordenadaNueva, string cordenadaActual)
+bool Tablero::moverFicha(string cordenadaNueva, string cordenadaActual, char colordeFicha)
 {
-    int posX;
-    int posY;
-    int posxNueva;
-    int posyNueva;
+
+    string temporal;
+    bool bandera;
+    bandera = reglas(cordenadaNueva, cordenadaActual, colordeFicha);
+    if (bandera)
+    {
+        temporal = tablerito[posY][posX].darTipo();
+        tablerito[posY][posX].cambiarTipo("  "); //quiere decir que la posicion actual queda vacia
+        tablerito[posyNueva][posxNueva].cambiarTipo(temporal);
+        system("cls");
+        //aqui el tablero se va actualizando
+        mostrarTablero();
+        return true;
+    }
+    else
+    {
+        system("cls");
+        mostrarTablero();
+        return false;
+    }
+}
+
+bool Tablero::reglas(string cordenadaNueva, string cordenadaActual, char colordeFicha)
+{
     string temporal;
     string x = "ABCDEF";
     string y = "654321";
+    bool tijera = false;
+    bool Roca = false;
+    bool Papel = false;
 
     for (int i = 0; i < 6; i++)
     {
         if (cordenadaActual[0] == x[i])
         {
             posX = i;
-            //cout << "Esta es la posicion actual de X: " << posX << endl;
         }
         if (cordenadaActual[1] == y[i])
         {
             posY = i;
-            //cout << "Esta es la posicion actual de Y: " << posY << endl;
         }
 
         if (cordenadaNueva[0] == x[i])
         {
             posxNueva = i;
-            //cout << "Esta es la  nueva posicion de X: " << posxNueva << endl;
         }
         if (cordenadaNueva[1] == y[i])
         {
             posyNueva = i;
-            //cout << "Esta es la  nueva posicion de y: " << posyNueva << endl;
         }
     }
-    temporal = tablerito[posY][posX].darTipo();
-    //cout << "Esto es temporal" << temporal << endl;
-    tablerito[posY][posX].cambiarTipo("  "); //quiere decir que la posicion actual queda vacia
-    tablerito[posyNueva][posxNueva].cambiarTipo(temporal);
-    mostrarTablero();
-}
+    string temporalfichaActual;
+    string temporalfichaNueva;
+    bool diagonal = false;
+    temporalfichaActual = tablerito[posY][posX].darTipo();
+    temporalfichaNueva = tablerito[posyNueva][posxNueva].darTipo();
+    if (temporalfichaActual[1] != colordeFicha)
+    {
+        //condicional para que el jugador 1 solamente pueda jugar con las fichas que le corresponde
+        //misFichas = true;
+        return false;
+    }
+    if ((temporalfichaActual[1] == temporalfichaNueva[1]))
+    {
+        return false;
+    }
+    if ((abs(posX - posxNueva) == 1) and (abs(posY - posyNueva) == 1))
+    {
+        diagonal = true;
+        //diagonal
+    }
+    if ((abs(posX - posxNueva) == 1) and (posY - posyNueva == 0))
+    {
+        diagonal = true;
+    }
+    if ((posX - posxNueva == 0) and (abs(posY - posyNueva) == 1))
+    {
+        diagonal = true;
+        //horizontal
+    }
+    if (diagonal == false)
+    {
+        return false;
+    }
 
-bool Tablero::reglas(string posicion){
+    //Tablero dentro del rango
+    if (((posX < 0) or (posX > 5)) and ((posxNueva < 0) or (posxNueva > 5)))
+    {
+        return false;
+    }
+    if (((posY < 0) or (posY > 5)) and ((posyNueva < 0) or (posyNueva > 5)))
+    {
+        return false;
+    }
+
+    if ((temporalfichaActual[0] == 'T' and temporalfichaNueva[0] == 'P') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
+    {
+        //tijera = true;
+        cout<<"esta es"<<temporalfichaActual[1]<<"|"<<temporalfichaNueva[1];
+        system("pause");
+        return true;
+    }
+
+    else if ((temporalfichaActual[0] == 'R' and temporalfichaNueva[0] == 'T') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
+    {
+        //Roca = true;
+        return true;
+    }
+    else if ((temporalfichaActual[0] == 'P' and temporalfichaNueva[0] == 'R') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
+    {
+        //Papel = true;
+        return true;
+    }
+    else if(temporalfichaNueva == "  "){
+        return true;
+    }
+
+    else if ((temporalfichaActual[0] == 'T' and temporalfichaNueva[0] == 'P') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
+    {
+        //tijera = true;
+        cout<<"esta es"<<temporalfichaActual[1]<<"|"<<temporalfichaNueva[1];
+        system("pause");
+        return true;
+    }
+
+    else if ((temporalfichaActual[0] == 'R' and temporalfichaNueva[0] == 'T') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
+    {
+        //Roca = true;
+        return true;
+    }
+    else if ((temporalfichaActual[0] == 'P' and temporalfichaNueva[0] == 'R') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
+    {
+        //Papel = true;
+        return true;    
+    }
+    else
+    {
+        //tijera = false;
+        //Roca = false;
+        //Papel = false;
+        return false;
+    }
     
 }
-
 
 int Tablero::pos_Y_PrimeraFichaEnAparecer(int color)
 {
@@ -207,8 +313,6 @@ int Tablero::pos_Y_PrimeraFichaEnAparecer(int color)
 int Tablero::pos_X_PrimeraFichaEnAparecer(int color)
 {
 }
-
-
 
 Ficha Tablero::darFicha(int x, int y)
 {
