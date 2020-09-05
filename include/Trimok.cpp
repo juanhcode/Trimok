@@ -35,6 +35,11 @@ void Trimok::visualizar()
 			switch (opcion)
 			{
 			case 1:
+			 	cout <<"para mover ficha ingresa la letra mayuscula y un numero "<<endl;
+				cout <<"solo se puede mover una posicion"<<endl;
+				cout <<"..............................................................."<<endl;
+
+
 				cout << "Jugador Blanco" << endl;
 				cout << "Tijeras blancas toman el papel negro " << endl;
 				cout << "Papel blanco toma la roca negra" << endl;
