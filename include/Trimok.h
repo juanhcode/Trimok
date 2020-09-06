@@ -25,25 +25,30 @@ Colaboracion: tablero
 #define __CLASSTRIMOK
 #include "Ficha.h"
 #include "Jugador.h"
+#include "Tablero.h"
 class Trimok
 {
 private:
     int opcion;
     int opcionParaEljugador;
     Tablero e;
+    Jugador jugadorB;
+    Jugador jugadorN;
+
 public:
     Trimok();
     ~Trimok();
     void seleccionarOpcion();
-    void mostrarDatos();   //Nueva Funcion
+    void mostrarDatos();     //Nueva Funcion
     void seleccionJugador(); //Nueva Funcion
     void escogerJugador();
     void visualizar();
     void play(); //R
-    int cambiarPuntaje (int puntaje, int tablero);
-    void visualizarMarcador (int puntajeFichaNegra, int puntajeFichaBlanca);
+    int cambiarPuntaje(int puntaje, int tablero);
+    void visualizarMarcador(int puntajeFichaNegra, int puntajeFichaBlanca);
     int obtenerJugadores(int jugador1, int jugador2);
-    int empezarJuego(Tablero Tablerito,Jugador Jugador1,Jugador Jugador2,Ficha FichaN,Ficha FichaB);
+    int empezarJuego(Tablero Tablerito, Jugador Jugador1, Jugador Jugador2, Ficha FichaN, Ficha FichaB);
     bool salir();
+    void obtenerNick();
 };
 #endif // __CLASTRIMOK

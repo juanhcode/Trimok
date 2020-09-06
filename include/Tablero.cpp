@@ -4,6 +4,7 @@
 #include <string.h>
 #include <math.h>
 using namespace std;
+//variables globales
 int posX;
 int posY;
 int posxNueva;
@@ -71,64 +72,38 @@ void Tablero::inicializarTablero()
 
 void Tablero::mostrarTablero()
 {
-    string mensaje;
-    cout << "_________________________________" << endl;
+    //aqui se imprime el tablero
+    //cout << endl;
+    //cout<<"                   :::TRIMOK:::                       "<<endl;
+    cout << "    __________________________________________" << endl;
     for (int i = 0; i < tablerito.size(); i++)
     {
-        cout << 6 - i << " | ";
+        cout << 6 - i << "  |  ";
         for (int j = 0; j < tablerito.size(); j++)
         {
-
-            /*if (tablerito[i][j].darColor() == 1)
-            {
-                mensaje = "B";
-            }
-            else if (tablerito[i][j].darColor() == 2)
-            {
-                mensaje = "N";
-            }
-            else
-            {
-                mensaje = "V";
-            }*/
-            cout << mensaje << tablerito[i][j].darTipo() << " | ";
+            cout << tablerito[i][j].darTipo() << "  |  ";
+        }
+        cout << "\n   |------|------|------|------|------|------|";
+        if (i == 0)
+        {
+            cout << "\t\t\t Jugador Blanco || Jugador Negro";
+        }
+        else if (i == 1)
+        {
+            cout << "\t\t\t RB: Roca Blanca || RN: Roca Negra";
+        }
+        else if (i == 2)
+        {
+            cout << "\t\t\t TB: Tijera Blanca || TN: Tijera Negra";
+        }
+        else if (i == 3)
+        {
+            cout << "\t\t\t PB: Papel blanco||PN: Papel Negro";
         }
         cout << endl;
     }
-    cout << "    A    B    C    D    E    F" << endl;
-}
 
-bool Tablero::hayUnaFichaEnUnaPosicion(int x, int y)
-{
-    //si la casilla es igual a B o N entonces la posicion esta ocupada en la posicion x y
-}
-
-bool Tablero::esVaciaUnaPosicion(int x, string y)
-{
-    string columna = "ABCDEF";
-    int posicionColumna;
-
-    for (int i = 0; i < columna.length(); i++)
-    {
-        /*if (y == columna[i])
-        {
-            posicionColumna = i;
-        }*/
-    }
-
-    /*for (int i = 0; i < tablerito.size(); i++)
-    {
-        for (int j = 0; j < tablerito.size(); j++)
-        {
-            if (tablerito[i][j].darTipo() == 4)
-            {
-                return true;
-            }
-        }
-    }*/
-    //1 = Piedra, 2 = Papel, 3 = Tijera, 4 = vacio
-    //cout << tablerito[0][0].darTipo() << "es" << endl;
-    return false;
+    cout << "      A      B      C      D      E      F" << endl;
 }
 
 int Tablero::verificarPosicion(int x, char y)
@@ -146,28 +121,16 @@ int Tablero::verificarPosicion(int x, char y)
     }
     return posicionColumna;
 }
-
-void Tablero::borrarFicha(string cordenada)
-{
-    string x = "ABCDEF";
-    string y = "123456";
-}
-
-bool Tablero::puedeMoverseFicha(int x, int y)
-{
-    //si se cumple con las condiciones se puede mover la ficha
-}
-
-bool Tablero::moverFicha(string cordenadaNueva, string cordenadaActual, char colordeFicha)
+bool Tablero::moverFicha(string cordenadaNueva, string cordenadaActual, char colordeFicha, Jugador &jugador)
 {
 
     string temporal;
     bool bandera;
-    bandera = reglas(cordenadaNueva, cordenadaActual, colordeFicha);
+    bandera = reglas(cordenadaNueva, cordenadaActual, colordeFicha, jugador);
     if (bandera)
     {
-        temporal = tablerito[posY][posX].darTipo();
-        tablerito[posY][posX].cambiarTipo("  "); //quiere decir que la posicion actual queda vacia
+        temporal = tablerito[posY][posX].darTipo(); //guarda la ficha actual en esa variable
+        tablerito[posY][posX].cambiarTipo("  ");    //quiere decir que la posicion actual queda vacia
         tablerito[posyNueva][posxNueva].cambiarTipo(temporal);
         system("cls");
         //aqui el tablero se va actualizando
@@ -182,20 +145,19 @@ bool Tablero::moverFicha(string cordenadaNueva, string cordenadaActual, char col
     }
 }
 
-bool Tablero::reglas(string cordenadaNueva, string cordenadaActual, char colordeFicha)
+bool Tablero::reglas(string cordenadaNueva, string cordenadaActual, char colordeFicha, Jugador &jugador)
 {
     string temporal;
     string x = "ABCDEF";
     string y = "654321";
-    bool tijera = false;
-    bool Roca = false;
-    bool Papel = false;
-
+    //coordenada tanto actual como nueva
+    //verifica si existe la coordenada que ingrese con el tablero
     for (int i = 0; i < 6; i++)
     {
         if (cordenadaActual[0] == x[i])
         {
             posX = i;
+            //se verifica la cordenada actual
         }
         if (cordenadaActual[1] == y[i])
         {
@@ -211,21 +173,27 @@ bool Tablero::reglas(string cordenadaNueva, string cordenadaActual, char colorde
             posyNueva = i;
         }
     }
-    string temporalfichaActual;
-    string temporalfichaNueva;
+
+    string temporalfichaActual; //guarda temporarlmente la ficha en esta variable
+    string temporalfichaNueva;  //guarda temporarlmente la ficha en esta variable
     bool diagonal = false;
     temporalfichaActual = tablerito[posY][posX].darTipo();
     temporalfichaNueva = tablerito[posyNueva][posxNueva].darTipo();
+
+    //condicional para que el jugador blanco o negro solamente pueda jugar con las fichas que le corresponde
     if (temporalfichaActual[1] != colordeFicha)
     {
-        //condicional para que el jugador 1 solamente pueda jugar con las fichas que le corresponde
-        //misFichas = true;
         return false;
     }
+
+    //REGLA PARA QUE EL JUGADOR  SOLO PUEDA MOVER FICHAS A ESPACIOS VACIOS NO MONTAR ENCIMA DE LA OTRA
     if ((temporalfichaActual[1] == temporalfichaNueva[1]))
     {
         return false;
     }
+
+
+    //MOVER ESA FICHA EN HORIZONTAL , VERTICAL Y DIAGONAL
     if ((abs(posX - posxNueva) == 1) and (abs(posY - posyNueva) == 1))
     {
         diagonal = true;
@@ -234,93 +202,82 @@ bool Tablero::reglas(string cordenadaNueva, string cordenadaActual, char colorde
     if ((abs(posX - posxNueva) == 1) and (posY - posyNueva == 0))
     {
         diagonal = true;
+        //Hori
     }
     if ((posX - posxNueva == 0) and (abs(posY - posyNueva) == 1))
     {
         diagonal = true;
-        //horizontal
+        //Ver
     }
     if (diagonal == false)
     {
         return false;
     }
 
-    //Tablero dentro del rango
-    if (((posX < 0) or (posX > 5)) and ((posxNueva < 0) or (posxNueva > 5)))
-    {
-        return false;
-    }
-    if (((posY < 0) or (posY > 5)) and ((posyNueva < 0) or (posyNueva > 5)))
-    {
-        return false;
-    }
-
+    //Ficha Blanca a negra
     if ((temporalfichaActual[0] == 'T' and temporalfichaNueva[0] == 'P') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
     {
-        //tijera = true;
-        cout<<"esta es"<<temporalfichaActual[1]<<"|"<<temporalfichaNueva[1];
-        system("pause");
+        jugador.setPuntaje(1);
         return true;
     }
 
     else if ((temporalfichaActual[0] == 'R' and temporalfichaNueva[0] == 'T') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
     {
-        //Roca = true;
+        jugador.setPuntaje(1);
         return true;
     }
     else if ((temporalfichaActual[0] == 'P' and temporalfichaNueva[0] == 'R') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
     {
-        //Papel = true;
+        jugador.setPuntaje(1);
         return true;
     }
-    else if(temporalfichaNueva == "  "){
+    else if (temporalfichaNueva == "  ")
+    {
         return true;
     }
 
+    //ficha negra a blanca
     else if ((temporalfichaActual[0] == 'T' and temporalfichaNueva[0] == 'P') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
     {
-        //tijera = true;
-        cout<<"esta es"<<temporalfichaActual[1]<<"|"<<temporalfichaNueva[1];
-        system("pause");
+        jugador.setPuntaje(1);
         return true;
     }
 
     else if ((temporalfichaActual[0] == 'R' and temporalfichaNueva[0] == 'T') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
     {
-        //Roca = true;
+        jugador.setPuntaje(1);
         return true;
     }
     else if ((temporalfichaActual[0] == 'P' and temporalfichaNueva[0] == 'R') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
     {
-        //Papel = true;
-        return true;    
+        jugador.setPuntaje(1);
+        return true;
     }
     else
     {
-        //tijera = false;
-        //Roca = false;
-        //Papel = false;
         return false;
     }
-    
 }
 
-int Tablero::pos_Y_PrimeraFichaEnAparecer(int color)
+bool Tablero::rangoTablero()
 {
-    //ingresa la primera ficha en la pocion y
-}
-
-int Tablero::pos_X_PrimeraFichaEnAparecer(int color)
-{
-}
-
-Ficha Tablero::darFicha(int x, int y)
-{
+    //condicion para que la ficha este dentro del rango del tablero
+    if (((posX < 0) or (posX > 5)) and ((posxNueva < 0) or (posxNueva > 5)))
+    {
+        cout << "opcion invalida :( " << endl;
+        system("pause");
+        return false;
+    }
+    if (((posY < 0) or (posY > 5)) and ((posyNueva < 0) or (posyNueva > 5)))
+    {
+        cout << "opcion invalida :( " << endl;
+        system("pause");
+        return false;
+    }
 }
 
 bool Tablero::retornoHabilitado(int x, int y)
 {
-    //si Bb , Nb o Vb ocupan i = 6 true si no false.
 }
 
 bool Tablero::puedeHacerRetorno(int actualx, int actualy, int nuevax, int nuevay)

@@ -51,7 +51,7 @@ bool Ficha::unEspacioVacio()
 
 bool Ficha::fichaExiste(string posicion)
 {
-    /*bool posX = false;
+    bool posX = false;
     bool posY = false;
     string x = "ABCDEF";
     string y = "123456";
@@ -66,16 +66,16 @@ bool Ficha::fichaExiste(string posicion)
         {
             posY = true;
         }
-    }*/
+    }
 
-    /*if ((posX == true) and (posY == true))
+    if ((posX == true) and (posY == true))
     {
         return true;
     }
     else
     {
         return false;
-    }*/
+    }
   
     
 }

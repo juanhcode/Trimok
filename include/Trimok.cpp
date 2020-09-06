@@ -27,7 +27,6 @@ void Trimok::seleccionarOpcion()
 
 void Trimok::visualizar()
 {
-
 	do
 	{
 		seleccionarOpcion();
@@ -35,10 +34,9 @@ void Trimok::visualizar()
 			switch (opcion)
 			{
 			case 1:
-			 	cout <<"para mover ficha ingresa la letra mayuscula y un numero "<<endl;
-				cout <<"solo se puede mover una posicion"<<endl;
-				cout <<"..............................................................."<<endl;
-
+				cout << "para mover ficha ingresa la letra mayuscula y un numero " << endl;
+				cout << "solo se puede mover una posicion" << endl;
+				cout << "..............................................................." << endl;
 
 				cout << "Jugador Blanco" << endl;
 				cout << "Tijeras blancas toman el papel negro " << endl;
@@ -54,7 +52,14 @@ void Trimok::visualizar()
 				system("pause");
 				break;
 			case 2:
-				escogerJugador();
+				obtenerNick();
+				mostrarDatos();
+				e.inicializarTablero();
+				cout << "                   :::TRIMOK:::                       " << endl;
+				e.mostrarTablero();
+				play();
+				system("pause");
+				break;
 				break;
 			}
 			system("cls");
@@ -62,58 +67,24 @@ void Trimok::visualizar()
 
 	} while (opcion != 3);
 }
-
-void Trimok::seleccionJugador()
-{
-
-	cout << "Escoge el Jugador" << endl;
-	cout << "1 - Jugador Blanco" << endl;
-	cout << "2 - Jugador Negro" << endl;
-	cout << "3 - Menu" << endl;
-
-	do
-	{
-		cout << "Introduzca Opcion: " << endl;
-		cin >> opcionParaEljugador;
-	} while (!((opcionParaEljugador >= 1) && (opcionParaEljugador <= 3)));
-}
-void Trimok::escogerJugador()
-{
-	do
-	{
-		seleccionJugador();
-		{
-			switch (opcionParaEljugador)
-			{
-			case 1:
-				mostrarDatos();
-				e.inicializarTablero();
-				e.mostrarTablero();
-				play();
-				system("pause");
-				break;
-			case 2:
-				break;
-
-			default:
-				break;
-			}
-			system("cls");
-		}
-	} while (opcionParaEljugador != 3);
-}
-
 void Trimok::mostrarDatos()
 {
-	cout << "Jugador Blanco"
-		 << "\t";
-	cout << "\tJugador Negro" << endl;
-	cout << "Ficha:"
-		 << "\t"
-		 << "\t";
-	cout << "\tFicha:" << endl;
+	//cout<<"Jugador Blanco"<<"\t";                                              cout<<"\tJugador Negro"<<endl;
+	cout << "Jugador Blanco: " << jugadorB.darNick() << "\t";
+	cout << "\tJugador Negro: " << jugadorN.darNick();
 }
+void Trimok::obtenerNick()
+{
+	string nickJugadorB;
+	string nickJugadorN;
 
+	cout << "Digite el Nick de el jugador blanco: " << endl;
+	cin >> nickJugadorB;
+	nickJugadorB = jugadorB.cambiarNick(nickJugadorB);
+	cout << "Digite el Nick de el jugador Negro" << endl;
+	cin >> nickJugadorN;
+	nickJugadorN = jugadorN.cambiarNick(nickJugadorN);
+}
 void Trimok::play()
 {
 	bool bandera;
@@ -123,26 +94,42 @@ void Trimok::play()
 	while (ganador)
 	{
 		bandera = false;
+		//si bandera es diferente a verdadero entra al while
 		while (bandera != true)
 		{
 			while (bandera != true)
 			{
-				cout << "Ingrese la Posicion del Jugador 1" << endl;
+				cout << "Puntaje " << jugadorB.darNick() << ":" << jugadorB.darPuntaje() << endl;
+				if (jugadorB.darPuntaje() > 11)
+				{
+					cout << "Ganaste!!" << jugadorB.darNick();
+				}
+				else if (jugadorN.darPuntaje() > 11)
+				{
+					cout << "Ganaste!!" << jugadorN.darNick();
+				}
+				cout << jugadorB.darNick() << "--> "
+					 << "Ingrese la Posicion actual" << endl;
 				cin >> posActual;
-				cout << "Ingrese la Posicion que desee mover Jugador 1" << endl;
+				cout << jugadorB.darNick() << "--> "
+					 << "Ingrese la Posicion que desee mover" << endl;
 				cin >> posNueva;
-				bandera = e.moverFicha(posNueva, posActual,'B');
+				bandera = e.moverFicha(posNueva, posActual, 'B', jugadorB);
+				//retorna verdadero si la regla se cumple
 			}
 		}
 		bandera = false;
 		while (bandera != true)
 		{
 
-			cout << "Ingrese la Posicion actual Jugador 2" << endl;
+			cout << "Puntaje " << jugadorN.darNick() << ":" << jugadorN.darPuntaje() << endl;
+			cout << jugadorN.darNick() << "--> "
+				 << "Ingrese la Posicion actual " << endl;
 			cin >> posActual;
-			cout << "Ingrese la Posicion que desee mover Jugador 2" << endl;
+			cout << jugadorN.darNick() << "--> "
+				 << "Ingrese la Posicion que desee mover" << endl;
 			cin >> posNueva;
-			bandera = e.moverFicha(posNueva, posActual,'N');
+			bandera = e.moverFicha(posNueva, posActual, 'N', jugadorN);
 		}
 	}
 }
