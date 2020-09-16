@@ -39,16 +39,22 @@ public:
     Trimok();
     ~Trimok();
     void seleccionarOpcion();
-    void mostrarDatos();     //Nueva Funcion
-    void seleccionJugador(); //Nueva Funcion
-    void escogerJugador();
     void visualizar();
-    void play(); //R
+    void mostrarDatos();
+    void obtenerNick();
+    void play();
+
+    //Metodos aun sin utilizar
+    void seleccionJugador();
+    void escogerJugador();
     int cambiarPuntaje(int puntaje, int tablero);
     void visualizarMarcador(int puntajeFichaNegra, int puntajeFichaBlanca);
     int obtenerJugadores(int jugador1, int jugador2);
     int empezarJuego(Tablero Tablerito, Jugador Jugador1, Jugador Jugador2, Ficha FichaN, Ficha FichaB);
     bool salir();
-    void obtenerNick();
+    void mostrarParejas();
 };
 #endif // __CLASTRIMOK
+
+
+
