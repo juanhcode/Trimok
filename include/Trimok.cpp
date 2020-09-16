@@ -67,6 +67,43 @@ void Trimok::visualizar()
 
 	} while (opcion != 3);
 }
+void Trimok::mostrarParejas()
+{
+
+	cout << "  Tipo de Juego" << endl;
+	cout << "1- JugadorHumano vs JugadorHumano" << endl;
+	cout << "2- JugadorComputadorAlAzar vs JugadorHumano" << endl;
+	cout << "3- JugadorHumano vs JugadorComputadorAlAzar" << endl;
+	cout << "4- JugadorComputadorAlAzar vs JugadorComputadorAlAzar" << endl;
+	cout << "5- Salir" << endl;
+	do
+	{
+		cout << "Introduzca Opcion: " << endl;
+		cin >> opcion;
+	} while (!((opcion >= 1) && (opcion <= 5)));
+
+	switch (opcionParaEljugador)
+	{
+	case 1:
+
+		break;
+
+	case 2:
+
+		break;
+
+	case 3:
+
+		break;
+
+	case 4:
+
+		break;
+
+	default:
+		break;
+	}
+}
 void Trimok::mostrarDatos()
 {
 	//cout<<"Jugador Blanco"<<"\t";                                              cout<<"\tJugador Negro"<<endl;

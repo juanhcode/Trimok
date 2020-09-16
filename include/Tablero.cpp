@@ -285,3 +285,8 @@ bool Tablero::puedeHacerRetorno(int actualx, int actualy, int nuevax, int nuevay
     /*para hacer el retorno se nesecita mirar si la ficha que llega esta sola en su fila correspondiente
     en ese caso se podra hacer  el retorno */
 }
+
+
+
+
+
