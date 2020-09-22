@@ -145,7 +145,7 @@ bool Tablero::moverFicha(string cordenadaNueva, string cordenadaActual, char col
     }
 }
 
-bool Tablero::reglas(string cordenadaNueva, string cordenadaActual, char colordeFicha, Jugador &jugador)
+/*bool Tablero::reglas(string cordenadaNueva, string cordenadaActual, char colordeFicha, Jugador &jugador)
 {
     string temporal;
     string x = "ABCDEF";
@@ -257,7 +257,7 @@ bool Tablero::reglas(string cordenadaNueva, string cordenadaActual, char colorde
     {
         return false;
     }
-}
+}*/
 
 bool Tablero::rangoTablero()
 {
@@ -286,7 +286,7 @@ bool Tablero::puedeHacerRetorno(int actualx, int actualy, int nuevax, int nuevay
     en ese caso se podra hacer  el retorno */
 }
 
+vector<vector<Ficha>> Tablero::darTablerito(){
 
-
-
-
+    return tablerito;
+}

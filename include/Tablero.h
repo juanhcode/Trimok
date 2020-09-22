@@ -45,5 +45,6 @@ public:
     bool puedeHacerRetorno(int actualX, int actualY, int nuevaX, int nuevaY);
     bool reglas(string cordenadaNueva, string cordenadaActual,char colordeFicha,Jugador &jugador);
     bool rangoTablero();
+    vector<vector<Ficha>> darTablerito();
 };
 #endif // __CLASTABLERO

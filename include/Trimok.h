@@ -31,6 +31,7 @@ class Trimok
 private:
     int opcion;
     int opcionParaEljugador;
+    int opcionParejas;
     Tablero e;
     Jugador jugadorB;
     Jugador jugadorN;
@@ -52,7 +53,8 @@ public:
     int obtenerJugadores(int jugador1, int jugador2);
     int empezarJuego(Tablero Tablerito, Jugador Jugador1, Jugador Jugador2, Ficha FichaN, Ficha FichaB);
     bool salir();
-    void mostrarParejas();
+    void seleccionarParejas();
+    void visualizarParejas();
 };
 #endif // __CLASTRIMOK
 

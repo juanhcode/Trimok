@@ -4,6 +4,8 @@ using namespace std;
 Trimok::Trimok()
 {
 	opcionParaEljugador = 0;
+	opcionParejas = 0;
+	opcion = 0;
 }
 
 Trimok::~Trimok()
@@ -52,22 +54,14 @@ void Trimok::visualizar()
 				system("pause");
 				break;
 			case 2:
-				obtenerNick();
-				mostrarDatos();
-				e.inicializarTablero();
-				cout << "                   :::TRIMOK:::                       " << endl;
-				e.mostrarTablero();
-				play();
-				system("pause");
-				break;
-				break;
+				visualizarParejas();
 			}
 			system("cls");
 		}
 
 	} while (opcion != 3);
 }
-void Trimok::mostrarParejas()
+void Trimok::seleccionarParejas()
 {
 
 	cout << "  Tipo de Juego" << endl;
@@ -79,30 +73,45 @@ void Trimok::mostrarParejas()
 	do
 	{
 		cout << "Introduzca Opcion: " << endl;
-		cin >> opcion;
-	} while (!((opcion >= 1) && (opcion <= 5)));
+		cin >> opcionParejas;
+	} while (!((opcionParejas >= 1) && (opcionParejas <= 5)));
+}
 
-	switch (opcionParaEljugador)
+void Trimok::visualizarParejas()
+{
+	do
 	{
-	case 1:
+		seleccionarParejas();
+		{
+			switch (opcionParejas)
+			{
+			case 1:
+				obtenerNick();
+				mostrarDatos();
+				e.inicializarTablero();
+				cout << "                   :::TRIMOK:::                       " << endl;
+				e.mostrarTablero();
+				play();
+				system("pause");
+				break;
 
-		break;
+			case 2:
 
-	case 2:
+				break;
 
-		break;
+			case 3:
 
-	case 3:
+				break;
 
-		break;
+			case 4:
 
-	case 4:
+				break;
 
-		break;
-
-	default:
-		break;
-	}
+			default:
+				break;
+			}
+		}
+	} while (opcionParejas != 5);
 }
 void Trimok::mostrarDatos()
 {
