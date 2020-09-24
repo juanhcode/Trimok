@@ -5,10 +5,7 @@
 #include <math.h>
 using namespace std;
 //variables globales
-int posX;
-int posY;
-int posxNueva;
-int posyNueva;
+std::vector<std::vector<Ficha>>Tablero:: tablerito;
 Tablero::Tablero()
 {
 }
@@ -70,11 +67,11 @@ void Tablero::inicializarTablero()
     }
 }
 
+
 void Tablero::mostrarTablero()
 {
-    //aqui se imprime el tablero
-    //cout << endl;
-    //cout<<"                   :::TRIMOK:::                       "<<endl;
+    
+    cout<<"                   :::TRIMOK:::                       "<<endl;
     cout << "    __________________________________________" << endl;
     for (int i = 0; i < tablerito.size(); i++)
     {
@@ -121,10 +118,10 @@ int Tablero::verificarPosicion(int x, char y)
     }
     return posicionColumna;
 }
-bool Tablero::moverFicha(string cordenadaNueva, string cordenadaActual, char colordeFicha, Jugador &jugador)
+bool Tablero::moverFicha(string cordenadaNueva, string cordenadaActual, char colordeFicha)
 {
 
-    string temporal;
+    /*string temporal;
     bool bandera;
     bandera = reglas(cordenadaNueva, cordenadaActual, colordeFicha, jugador);
     if (bandera)
@@ -142,7 +139,7 @@ bool Tablero::moverFicha(string cordenadaNueva, string cordenadaActual, char col
         system("cls");
         mostrarTablero();
         return false;
-    }
+    }*/
 }
 
 /*bool Tablero::reglas(string cordenadaNueva, string cordenadaActual, char colordeFicha, Jugador &jugador)
@@ -262,7 +259,7 @@ bool Tablero::moverFicha(string cordenadaNueva, string cordenadaActual, char col
 bool Tablero::rangoTablero()
 {
     //condicion para que la ficha este dentro del rango del tablero
-    if (((posX < 0) or (posX > 5)) and ((posxNueva < 0) or (posxNueva > 5)))
+    /*if (((posX < 0) or (posX > 5)) and ((posxNueva < 0) or (posxNueva > 5)))
     {
         cout << "opcion invalida :( " << endl;
         system("pause");
@@ -273,7 +270,7 @@ bool Tablero::rangoTablero()
         cout << "opcion invalida :( " << endl;
         system("pause");
         return false;
-    }
+    }*/
 }
 
 bool Tablero::retornoHabilitado(int x, int y)
@@ -286,7 +283,27 @@ bool Tablero::puedeHacerRetorno(int actualx, int actualy, int nuevax, int nuevay
     en ese caso se podra hacer  el retorno */
 }
 
-vector<vector<Ficha>> Tablero::darTablerito(){
+vector<vector<Ficha>> Tablero::darTablerito()
+{
 
     return tablerito;
+}
+
+string Tablero::getFichaActual(int posX, int posY)
+{
+    string temporal;
+    temporal = tablerito[posX][posY].darTipo();
+    //cout << temporal << endl;
+    //system("pause");
+    return temporal;
+}
+
+void Tablero::setPosicionBlanca(int posX, int posY)
+{
+    tablerito[posX][posY].cambiarTipo("  "); //quiere decir que la posicion actual queda vacia
+}
+
+void Tablero::setAsignarMovimiento(string temporal, int posyNueva, int posxNueva)
+{
+    tablerito[posyNueva][posxNueva].cambiarTipo(temporal);
 }

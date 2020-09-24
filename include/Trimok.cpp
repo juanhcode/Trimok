@@ -1,5 +1,7 @@
 #include "Trimok.h"
 #include <iostream>
+#include <time.h>
+#include <string.h>
 using namespace std;
 Trimok::Trimok()
 {
@@ -7,6 +9,8 @@ Trimok::Trimok()
 	opcionParejas = 0;
 	opcion = 0;
 }
+string nickJugadorB;
+string nickJugadorN;
 
 Trimok::~Trimok()
 {
@@ -90,20 +94,34 @@ void Trimok::visualizarParejas()
 				mostrarDatos();
 				e.inicializarTablero();
 				cout << "                   :::TRIMOK:::                       " << endl;
-				e.mostrarTablero();
+				//e.mostrarTablero();
 				play();
 				system("pause");
 				break;
 
 			case 2:
-
+				cout << "Digite el Nick de el jugador Negro:" << endl;
+				cin >> nickJugadorB;
+				obtenerNick2(*jugadorNegro, nickJugadorB);
+				e.inicializarTablero();
+				cout << "                   :::TRIMOK:::                       " << endl;
+				//e.mostrarTablero();
+				play2();
+				system("pause");
 				break;
 
 			case 3:
-
+				cout << "Digite el Nick de el jugador blanco:" << endl;
+				cin >> nickJugadorB;
+				obtenerNick2(*jugadorBlanco, nickJugadorB);
+				//cout << "El nombre es" << jugadorBlanco->darNick() << endl;
+				play3();
+				system("pause");
 				break;
 
 			case 4:
+				play4();
+				system("pause");
 
 				break;
 
@@ -116,21 +134,26 @@ void Trimok::visualizarParejas()
 void Trimok::mostrarDatos()
 {
 	//cout<<"Jugador Blanco"<<"\t";                                              cout<<"\tJugador Negro"<<endl;
-	cout << "Jugador Blanco: " << jugadorB.darNick() << "\t";
-	cout << "\tJugador Negro: " << jugadorN.darNick();
+	cout << "Jugador Blanco: " << jugadorBlanco->darNick() << "\t";
+	cout << "\tJugador Negro: " << jugadorNegro->darNick();
 }
+
 void Trimok::obtenerNick()
 {
-	string nickJugadorB;
-	string nickJugadorN;
 
 	cout << "Digite el Nick de el jugador blanco: " << endl;
 	cin >> nickJugadorB;
-	nickJugadorB = jugadorB.cambiarNick(nickJugadorB);
+	nickJugadorB = jugadorBlanco->cambiarNick(nickJugadorB);
 	cout << "Digite el Nick de el jugador Negro" << endl;
 	cin >> nickJugadorN;
-	nickJugadorN = jugadorN.cambiarNick(nickJugadorN);
+	nickJugadorN = jugadorNegro->cambiarNick(nickJugadorN);
 }
+
+void Trimok::obtenerNick2(JugadorHumano &j, string nombre)
+{
+	j.cambiarNick(nombre);
+}
+//void modificar();
 void Trimok::play()
 {
 	bool bandera;
@@ -143,24 +166,26 @@ void Trimok::play()
 		//si bandera es diferente a verdadero entra al while
 		while (bandera != true)
 		{
+
 			while (bandera != true)
 			{
-				cout << "Puntaje " << jugadorB.darNick() << ":" << jugadorB.darPuntaje() << endl;
-				if (jugadorB.darPuntaje() > 11)
+				e.mostrarTablero();
+				/*cout << "Puntaje " << jugadorBlanco->cambiarNick(nickJugadorB) << ":" << jugadorBlanco->darPuntaje() << endl;
+				if (jugadorBlanco->darPuntaje() > 11)
 				{
-					cout << "Ganaste!!" << jugadorB.darNick();
+					cout << "Ganaste!!" << jugadorBlanco->darNick();
 				}
-				else if (jugadorN.darPuntaje() > 11)
+				else if (jugadorBlanco->darPuntaje() > 11)
 				{
-					cout << "Ganaste!!" << jugadorN.darNick();
-				}
-				cout << jugadorB.darNick() << "--> "
+					cout << "Ganaste!!" << jugadorBlanco->darNick();
+				}*/
+				cout << jugadorBlanco->darNick() << "--> "
 					 << "Ingrese la Posicion actual" << endl;
 				cin >> posActual;
-				cout << jugadorB.darNick() << "--> "
+				cout << jugadorBlanco->darNick() << "--> "
 					 << "Ingrese la Posicion que desee mover" << endl;
 				cin >> posNueva;
-				bandera = e.moverFicha(posNueva, posActual, 'B', jugadorB);
+				bandera = jugadorBlanco->moverFicha(posNueva, posActual, 'B');
 				//retorna verdadero si la regla se cumple
 			}
 		}
@@ -168,14 +193,400 @@ void Trimok::play()
 		while (bandera != true)
 		{
 
-			cout << "Puntaje " << jugadorN.darNick() << ":" << jugadorN.darPuntaje() << endl;
-			cout << jugadorN.darNick() << "--> "
+			e.mostrarTablero();
+			cout << "Puntaje " << jugadorNegro->darNick() << ":" << jugadorNegro->darPuntaje() << endl;
+			cout << jugadorNegro->darNick() << "--> "
 				 << "Ingrese la Posicion actual " << endl;
 			cin >> posActual;
-			cout << jugadorN.darNick() << "--> "
+			cout << jugadorNegro->darNick() << "--> "
 				 << "Ingrese la Posicion que desee mover" << endl;
 			cin >> posNueva;
-			bandera = e.moverFicha(posNueva, posActual, 'N', jugadorN);
+			bandera = jugadorNegro->moverFicha(posNueva, posActual, 'N');
+		}
+	}
+}
+
+int miRandom(int i, int f)
+{
+	return i + rand() % (f + 1);
+}
+
+void Trimok::play2()
+{
+	bool bandera;
+	bool ganador = true;
+	string posActual, posNueva;
+	srand(time(NULL));
+	int x[] = {0, 1, 2, 3, 4, 5};
+	int temporal = 5;
+	int temporal1;
+	int tempora3;
+	int temporal4;
+
+	while (ganador)
+	{
+		bandera = false;
+		//si bandera es diferente a verdadero entra al while
+		while (bandera != true)
+		{
+
+			while (bandera != true)
+			{
+
+				for (int i = 0; i < 1; i++)
+				{
+					//temporal = x[miRandom(0, 5)];
+					temporal1 = x[miRandom(0, 5)];
+					tempora3 = x[miRandom(0, 1)];
+					temporal4 = x[miRandom(0, 1)];
+				}
+
+				posActual = "";
+				posNueva = "";
+				//cout << "-" << temporal << endl;
+				//cout << "*" << temporal << endl;
+				posActual = to_string(temporal);
+				posActual += to_string(temporal1);
+				if ((temporal == 0) && (tempora3 == 1))
+				{
+					posNueva = to_string(temporal);
+				}
+				else
+				{
+					posNueva = to_string(temporal - tempora3);
+				}
+				/////////////
+				//posNueva += to_string(temporal1 + temporal4);
+				if ((temporal1 == 0) && (temporal4 == 1))
+				{
+					posNueva += to_string(temporal1);
+				}
+				else
+				{
+					posNueva += to_string(temporal1 - temporal4);
+				}
+
+				bandera = maquina->moverFicha(posNueva, posActual, 'B');
+				temporal -= 1; //Recorre filas
+				if (temporal < 0)
+				{
+					temporal = 5;
+				}
+
+				//cout << bandera << endl;
+				//retorna verdadero si la regla se cumple
+			}
+		}
+		bandera = false;
+		while (bandera != true)
+		{
+			e.mostrarTablero();
+			cout << "Puntaje " << jugadorNegro->darNick() << ":" << jugadorNegro->darPuntaje() << endl;
+			cout << jugadorNegro->darNick() << "--> "
+				 << "Ingrese la Posicion actual " << endl;
+			cin >> posActual;
+			cout << jugadorNegro->darNick() << "--> "
+				 << "Ingrese la Posicion que desee mover" << endl;
+			cin >> posNueva;
+			bandera = jugadorNegro->moverFicha(posNueva, posActual, 'N');
+			temporal = 5;
+		}
+	}
+}
+
+void Trimok::play3()
+{
+	bool bandera;
+	bool ganador = true;
+	string posActual, posNueva;
+	srand(time(NULL));
+	int x[] = {0, 1, 2, 3, 4, 5};
+	int temporal;
+	int temporal1;
+	int tempora3;
+	int temporal4;
+
+	while (ganador)
+	{
+		bandera = false;
+		//si bandera es diferente a verdadero entra al while
+		while (bandera != true)
+		{
+
+			while (bandera != true)
+			{
+
+				e.mostrarTablero();
+				cout << "Puntaje " << jugadorBlanco->darNick() << ":" << jugadorBlanco->darPuntaje() << endl;
+				cout << jugadorBlanco->darNick() << "--> "
+					 << "Ingrese la Posicion actual " << endl;
+				cin >> posActual;
+				cout << jugadorBlanco->darNick() << "--> "
+					 << "Ingrese la Posicion que desee mover" << endl;
+				cin >> posNueva;
+				bandera = jugadorBlanco->moverFicha(posNueva, posActual, 'B');
+				temporal = 0;
+
+				//cout << bandera << endl;
+				//retorna verdadero si la regla se cumple
+			}
+		}
+		bandera = false;
+		while (bandera != true)
+		{
+			for (int i = 0; i < 1; i++)
+			{
+				//temporal = x[miRandom(0, 5)];
+				temporal1 = x[miRandom(0, 5)];
+				tempora3 = x[miRandom(0, 1)];
+				temporal4 = x[miRandom(0, 1)];
+			}
+
+			posActual = "";
+			posNueva = "";
+			//cout << "-" << temporal << endl;
+			//cout << "*" << temporal << endl;
+			posActual = to_string(temporal);
+			posActual += to_string(temporal1);
+			if ((temporal == 5) && (tempora3 == 1))
+			{
+				posNueva = to_string(temporal);
+				//si se cumple , va enviar un 5
+			}
+			else
+			{
+				posNueva = to_string(temporal + tempora3);
+			}
+			/////////////
+			//posNueva += to_string(temporal1 + temporal4);
+			if ((temporal1 == 5) && (temporal4 == 1))
+			{
+				posNueva += to_string(temporal1);
+				//se concatena
+			}
+			else
+			{
+				posNueva += to_string(temporal1 + temporal4);
+			}
+
+			bandera = maquina->moverFicha(posNueva, posActual, 'N');
+			temporal += 1; //Recorre filas
+			if (temporal > 5)
+			{
+				temporal = 0;
+			}
+		}
+	}
+}
+
+void Trimok::play4()
+{
+	bool bandera;
+	bool ganador = true;
+	string posActual, posNueva;
+	srand(time(NULL));
+	int x[] = {0, 1, 2, 3, 4, 5};
+	int maquinaN = 0;
+	int maquinaB = 5;
+	int temporal1;
+	int tempora3;
+	int temporal4;
+
+	while (ganador)
+	{
+		bandera = false;
+		//si bandera es diferente a verdadero entra al while
+		while (bandera != true)
+		{
+			e.mostrarTablero();
+			system("pause");
+			playMaquina('B', 5);
+			/*while (bandera != true)
+			{
+
+				
+				maquinaN = 0;
+				for (int i = 0; i < 1; i++)
+				{
+					//temporal = x[miRandom(0, 5)];
+					temporal1 = x[miRandom(0, 5)];
+					tempora3 = x[miRandom(0, 1)];
+					temporal4 = x[miRandom(0, 1)];
+				}
+
+				posActual = "";
+				posNueva = "";
+				//cout << "-" << temporal << endl;
+				//cout << "*" << temporal << endl;
+				posActual = to_string(maquinaB);
+				posActual += to_string(temporal1);
+				if ((maquinaB == 0) && (tempora3 == 1))
+				{
+					posNueva = to_string(maquinaB);
+				}
+				else
+				{
+					posNueva = to_string(maquinaB - tempora3);
+				}
+				/////////////
+				//posNueva += to_string(temporal1 + temporal4);
+				if ((temporal1 == 0) && (temporal4 == 1))
+				{
+					posNueva += to_string(temporal1);
+				}
+				else
+				{
+					posNueva += to_string(temporal1 - temporal4);
+				}
+
+				bandera = maquina->moverFicha(posNueva, posActual, 'B');
+				maquinaB -= 1; //Recorre filas
+				if (maquinaB < 0)
+				{
+					maquinaB = 5;
+				}
+
+				//cout << bandera << endl;
+				//retorna verdadero si la regla se cumple
+			}*/
+			bandera = false;
+			e.mostrarTablero();
+			system("pause");
+			playMaquina('N', 0);
+		}
+
+		/*while (bandera != true)
+		{
+
+			playMaquina('N', 0);
+			/*maquinaB = 5;
+			for (int i = 0; i < 1; i++)
+			{
+				//temporal = x[miRandom(0, 5)];
+				temporal1 = x[miRandom(0, 5)];
+				tempora3 = x[miRandom(0, 1)];
+				temporal4 = x[miRandom(0, 1)];
+			}
+
+			posActual = "";
+			posNueva = "";
+			//cout << "-" << temporal << endl;
+			//cout << "*" << temporal << endl;
+			posActual = to_string(maquinaN);
+			posActual += to_string(temporal1);
+			if ((maquinaN == 5) && (tempora3 == 1))
+			{
+				posNueva = to_string(maquinaN);
+			}
+			else
+			{
+				posNueva = to_string(maquinaN + tempora3);
+			}
+			/////////////
+			//posNueva += to_string(temporal1 + temporal4);
+			if ((temporal1 == 5) && (temporal4 == 1))
+			{
+				posNueva += to_string(temporal1);
+			}
+			else
+			{
+				posNueva += to_string(temporal1 + temporal4);
+			}
+
+			bandera = maquina->moverFicha(posNueva, posActual, 'N');
+			maquinaN += 1; //Recorre filas
+			if (maquinaN > 5)
+			{
+				maquinaN = 0;
+			}
+		}
+		*/
+	}
+}
+
+void Trimok::playMaquina(char color, int posicion)
+{
+
+	bool bandera;
+	bool ganador = true;
+	string posActual, posNueva;
+	srand(time(NULL));
+	int x[] = {0, 1, 2, 3, 4, 5};
+	int maquinaB = 5;
+	int temporal1;
+	int tempora3;
+	int temporal4;
+
+	while (bandera != true)
+	{
+		int maquinaBN = posicion;
+		for (int i = 0; i < 1; i++)
+		{
+			//temporal = x[miRandom(0, 5)];
+			temporal1 = x[miRandom(0, 5)];
+			tempora3 = x[miRandom(0, 1)];
+			temporal4 = x[miRandom(0, 1)];
+		}
+
+		posActual = "";
+		posNueva = "";
+		//cout << "-" << temporal << endl;
+		//cout << "*" << temporal << endl;
+		posActual = to_string(maquinaBN);
+		posActual += to_string(temporal1);
+		if ((maquinaB == (5 - posicion)) && (tempora3 == 1))
+		{
+			posNueva = to_string(maquinaBN);
+		}
+		else
+		{
+			if (posicion == 0)
+			{
+				posNueva = to_string(maquinaBN + tempora3);
+			}
+			if (posicion == 5)
+			{
+				posNueva = to_string(maquinaBN - tempora3);
+			}
+
+			//posNueva = to_string(maquinaBN - tempora3);
+		}
+		/////////////
+		//posNueva += to_string(temporal1 + temporal4);
+		if ((temporal1 == (5 - posicion)) && (temporal4 == 1))
+		{
+			posNueva += to_string(temporal1);
+		}
+		else
+		{
+			//posNueva += to_string(temporal1 - temporal4);
+			if (posicion == 0)
+			{
+				posNueva += to_string(temporal1 + temporal4);
+			}
+			if (posicion == 5)
+			{
+				posNueva += to_string(temporal1 - temporal4);
+			}
+		}
+		//char blanco[] = "B";
+		bandera = maquina->moverFicha(posNueva, posActual, color);
+		if (color == 'B')
+		{
+			maquinaBN -= 1; //Recorre filas
+			if (maquinaBN < 0)
+			{
+				maquinaBN = 5;
+			}
+		}
+
+		if (color == 'N')
+		{
+			maquinaBN += 1; //Recorre filas
+			if (maquinaBN > 5)
+			{
+				maquinaBN = 0;
+			}
 		}
 	}
 }

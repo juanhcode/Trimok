@@ -24,22 +24,30 @@ Responsabilidad:
 Colaboracion:tablero
 */
 #include "Ficha.h"
+#include "Tablero.h"
 #ifndef __CLASSJUGADOR
 #define __CLASSJUGADOR
 class Jugador
 {
 private:
+protected:
     string nick;
     int puntaje;
+    Tablero tablero;
+    int posX;
+    int posY;
+    int posxNueva;
+    int posyNueva;
+
 public:
     Jugador();
-    int moverFicha(Ficha FichaN, Ficha FichaB, int posicion);
-    int darPuntaje();
-    void setPuntaje(int nuevoPuntaje);
-    string darNick();
-    string cambiarNick(string nuevoNick);
-    bool seleccionar(Ficha FichaN, Ficha FichaB, int Posicion);
-    bool agregarFicha(Ficha FichaN, Ficha FichaB, int posicion);
+    virtual int darPuntaje() = 0;
+    virtual void setPuntaje(int nuevoPuntaje) = 0;
+    virtual string darNick() = 0;
+    virtual string cambiarNick(string nuevoNick) = 0;
+    virtual bool moverFicha(string cordenadaNueva, string cordenadaActual, char colordeFicha) = 0;
+    virtual bool reglas(string cordenadaNueva, string cordenadaActual, char colordeFicha) = 0;
+    //virtual void mostrarDatos() = 0;
     ~Jugador();
 };
 #endif // __CLASJUGADOR

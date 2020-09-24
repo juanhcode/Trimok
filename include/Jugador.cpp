@@ -7,7 +7,7 @@ Jugador::~Jugador(){
 
 }
 
-string Jugador::darNick(){
+/*string Jugador::darNick(){
     return nick;
 }
 
@@ -20,12 +20,4 @@ int Jugador::darPuntaje(){
 }
 void Jugador::setPuntaje(int nuevoPuntaje){
     puntaje += nuevoPuntaje;
-}
-
-bool Jugador::seleccionar(Ficha FichaN,Ficha FichaB, int Posicion){
-
-}
-
-bool Jugador::agregarFicha(Ficha FichaN,Ficha FichaB,int posicion){
-
-}
+}*/
