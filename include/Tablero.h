@@ -42,7 +42,7 @@ public:
     bool moverFicha(string cordenadaNueva, string cordenadaActual,char colordeFicha);
     bool retornoHabilitado(int x, int y);
     bool puedeHacerRetorno(int actualX, int actualY, int nuevaX, int nuevaY);
-    bool reglas(string cordenadaNueva, string cordenadaActual,char colordeFicha);
+    bool reglas(string cordenadaNueva, string cordenadaActual,char colordeFicha);/*NO SE HA UTILIZADO */
     bool rangoTablero();
     vector<vector<Ficha>> darTablerito();
     string getFichaActual(int posX,int posY);

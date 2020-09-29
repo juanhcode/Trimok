@@ -39,14 +39,7 @@ int Ficha::darPosicionX()
 
 bool Ficha::unEspacioVacio()
 {
-    /*if (tipo = 4)
-    {
-        true;
-    }
-    else
-    {
-        false;
-    }*/
+    
 }
 
 bool Ficha::fichaExiste(string posicion)
@@ -82,14 +75,6 @@ bool Ficha::fichaExiste(string posicion)
 
 bool Ficha::puedeMoverse()
 {
-    /*if ((color = 0) and (tipo = 0))
-    {
-        true;
-    }
-    else
-    {
-        false;
-    }*/
 }
 
 int Ficha::puedeComerUnaFicha(Ficha fichaAComer)

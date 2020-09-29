@@ -13,7 +13,6 @@ public:
     int darPuntaje();
     string cambiarNick(string nuevoNick);
     void setPuntaje(int nuevoPuntaje);
-    //void mostrarDatos();
     ~JugadorHumano();
 };
 

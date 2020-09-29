@@ -19,12 +19,19 @@ Colaboracion: tablero
 */
 #ifndef __CLASSFABRICAJUGADOR
 #define __CLASSFABRICAJUGADOR
+#include "JugadorComputadorAlAzar.h"
+#include "JugadorHumano.h"
 class FabricaJugador
 {
 private:
     
 public:
     FabricaJugador();
+    JugadorComputadorAlAzar* darMaquina();
+    JugadorHumano* darHumano();
+    void modo1(JugadorHumano *jugadorBlanco,JugadorHumano *jugadorNegro);
+    //void pareja2(JugadorComputadorAlAzar *jugadorMaquina, JugadorHumano *jugadorNegro);
+    //void pareja3(JugadorComputadorAlAzar &jugadorMaquinaB,JugadorComputadorAlAzar &jugadorMaquinaN);
     ~FabricaJugador();
 };
 

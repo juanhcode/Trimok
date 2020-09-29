@@ -1,39 +1,28 @@
 #include "JugadorHumano.h"
 #include <iostream>
-/*+Tablero tablero;
-int posX;
-int posY;
-int posxNueva;
-int posyNueva;
-*/
 JugadorHumano::JugadorHumano()
 {
     tablero.inicializarTablero();
 }
 
 bool JugadorHumano::moverFicha(string cordenadaNueva, string cordenadaActual, char colordeFicha)
-//PARA LA MAQUINA ES LO MISMO SOLO QUE COMO ARGUMENTO NOS VA RECIBIR COLOR DE LA FICHA
 {
 
     string temporal;
     bool bandera;
     bandera = reglas(cordenadaNueva, cordenadaActual, colordeFicha);
-    //Para la maquina solo va recibir como argumento el color de la ficha
     if (bandera)
     {
         temporal = tablero.getFichaActual(posY, posX); //guarda la ficha actual en esa variable
         tablero.setPosicionBlanca(posY, posX);         //quiere decir que la posicion actual queda vacia
         tablero.setAsignarMovimiento(temporal, posyNueva, posxNueva);
-        //tablero.darTablerito()[posyNueva][posxNueva].cambiarTipo(temporal);
         system("cls");
         //aqui el tablero se va actualizando
-        //tablero.mostrarTablero();
         return true;
     }
     else
     {
         system("cls");
-        //tablero.mostrarTablero();
         return false;
     }
 }
@@ -70,7 +59,6 @@ bool JugadorHumano::reglas(string cordenadaNueva, string cordenadaActual, char c
     string temporalfichaActual; //guarda temporarlmente la ficha en esta variable
     string temporalfichaNueva;  //guarda temporarlmente la ficha en esta variable
     bool diagonal = false;
-    //cout << "este es mi valor "<<posY<<"----"<<posX;
 
     temporalfichaActual = tablero.getFichaActual(posY, posX);
     temporalfichaNueva = tablero.getFichaActual(posyNueva, posxNueva);
@@ -111,18 +99,19 @@ bool JugadorHumano::reglas(string cordenadaNueva, string cordenadaActual, char c
     //Ficha Blanca a negra
     if ((temporalfichaActual[0] == 'T' and temporalfichaNueva[0] == 'P') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
     {
-        //jugador.setPuntaje(1);
+        juez.setPuntajeJugador1(1);
+
         return true;
     }
 
     else if ((temporalfichaActual[0] == 'R' and temporalfichaNueva[0] == 'T') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
     {
-        //jugador.setPuntaje(1);
+        juez.setPuntajeJugador1(1);
         return true;
     }
     else if ((temporalfichaActual[0] == 'P' and temporalfichaNueva[0] == 'R') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
     {
-        //jugador.setPuntaje(1);
+        juez.setPuntajeJugador1(1);
         return true;
     }
     else if (temporalfichaNueva == "  ")
@@ -134,17 +123,20 @@ bool JugadorHumano::reglas(string cordenadaNueva, string cordenadaActual, char c
     else if ((temporalfichaActual[0] == 'T' and temporalfichaNueva[0] == 'P') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
     {
         //jugador.setPuntaje(1);
+        juez.setPuntajeJugador1(1);
         return true;
     }
 
     else if ((temporalfichaActual[0] == 'R' and temporalfichaNueva[0] == 'T') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
     {
         //jugador.setPuntaje(1);
+        juez.setPuntajeJugador1(1);
         return true;
     }
     else if ((temporalfichaActual[0] == 'P' and temporalfichaNueva[0] == 'R') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
     {
         //jugador.setPuntaje(1);
+        juez.setPuntajeJugador1(1);
         return true;
     }
     else
@@ -165,7 +157,7 @@ string JugadorHumano::cambiarNick(string nuevoNick)
 
 int JugadorHumano::darPuntaje()
 {
-    return puntaje;
+    return juez.darPuntajeJugador1();
 }
 void JugadorHumano::setPuntaje(int nuevoPuntaje)
 {

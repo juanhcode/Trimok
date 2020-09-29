@@ -25,6 +25,7 @@ Colaboracion:tablero
 */
 #include "Ficha.h"
 #include "Tablero.h"
+#include "juez.h"
 #ifndef __CLASSJUGADOR
 #define __CLASSJUGADOR
 class Jugador
@@ -38,7 +39,7 @@ protected:
     int posY;
     int posxNueva;
     int posyNueva;
-
+    Juez juez;
 public:
     Jugador();
     virtual int darPuntaje() = 0;
@@ -47,7 +48,6 @@ public:
     virtual string cambiarNick(string nuevoNick) = 0;
     virtual bool moverFicha(string cordenadaNueva, string cordenadaActual, char colordeFicha) = 0;
     virtual bool reglas(string cordenadaNueva, string cordenadaActual, char colordeFicha) = 0;
-    //virtual void mostrarDatos() = 0;
     ~Jugador();
 };
 #endif // __CLASJUGADOR

@@ -45,6 +45,7 @@ public:
     string darTipo();
     int darPosicionY();
     int darPosicionX();
+    //sin utilizar
     bool unEspacioVacio();
     bool puedeMoverse();
     int puedeComerUnaFicha(Ficha fichaAComer);

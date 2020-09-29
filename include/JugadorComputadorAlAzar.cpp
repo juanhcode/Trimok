@@ -44,32 +44,6 @@ bool JugadorComputadorAlAzar::moverFicha(string cordenadaNueva, string cordenada
 
 bool JugadorComputadorAlAzar::reglas(string cordenadaNueva, string cordenadaActual, char colordeFicha)
 {
-    /*string temporal;
-    string x = "ABCDEF";
-    string y = "654321";
-    //coordenada tanto actual como nueva
-    //verifica si existe la coordenada que ingrese con el tablero
-    for (int i = 0; i < 6; i++)
-    {
-        if (cordenadaActual[0] == x[i])
-        {
-            posX = i;
-            //se verifica la cordenada actual
-        }
-        if (cordenadaActual[1] == y[i])
-        {
-            posY = i;
-        }
-
-        if (cordenadaNueva[0] == x[i])
-        {
-            posxNueva = i;
-        }
-        if (cordenadaNueva[1] == y[i])
-        {
-            posyNueva = i;
-        }
-    }*/
     posX = atoi(cordenadaActual.c_str()) / 10;
     posY = atoi(cordenadaActual.c_str()) % 10;
     posxNueva = atoi(cordenadaNueva.c_str()) / 10;
@@ -79,12 +53,9 @@ bool JugadorComputadorAlAzar::reglas(string cordenadaNueva, string cordenadaActu
     string temporalfichaActual; //guarda temporarlmente la ficha en esta variable
     string temporalfichaNueva;  //guarda temporarlmente la ficha en esta variable
     bool diagonal = false;
-    //cout << "este es mi valor "<<posY<<"----"<<posX;
 
     temporalfichaActual = tablero.getFichaActual(posY, posX);
     temporalfichaNueva = tablero.getFichaActual(posyNueva, posxNueva);
-    //cout << "Actual" << temporalfichaActual << endl;
-    //cout << "Nueva" << temporalfichaNueva << endl;
 
     //condicional para que el jugador blanco o negro solamente pueda jugar con las fichas que le corresponde
     if (temporalfichaActual[1] != colordeFicha)
@@ -123,17 +94,20 @@ bool JugadorComputadorAlAzar::reglas(string cordenadaNueva, string cordenadaActu
     if ((temporalfichaActual[0] == 'T' and temporalfichaNueva[0] == 'P') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
     {
         //jugador.setPuntaje(1);
+        juez.setPuntajeJugador1(1);
         return true;
     }
 
     else if ((temporalfichaActual[0] == 'R' and temporalfichaNueva[0] == 'T') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
     {
         //jugador.setPuntaje(1);
+        juez.setPuntajeJugador1(1);
         return true;
     }
     else if ((temporalfichaActual[0] == 'P' and temporalfichaNueva[0] == 'R') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
     {
         //jugador.setPuntaje(1);
+        juez.setPuntajeJugador1(1);
         return true;
     }
     else if (temporalfichaNueva == "  ")
@@ -145,36 +119,26 @@ bool JugadorComputadorAlAzar::reglas(string cordenadaNueva, string cordenadaActu
     else if ((temporalfichaActual[0] == 'T' and temporalfichaNueva[0] == 'P') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
     {
         //jugador.setPuntaje(1);
+        juez.setPuntajeJugador1(1);
         return true;
     }
 
     else if ((temporalfichaActual[0] == 'R' and temporalfichaNueva[0] == 'T') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
     {
         //jugador.setPuntaje(1);
+        juez.setPuntajeJugador1(1);
         return true;
     }
     else if ((temporalfichaActual[0] == 'P' and temporalfichaNueva[0] == 'R') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
     {
         //jugador.setPuntaje(1);
+        juez.setPuntajeJugador1(1);
         return true;
     }
     else
     {
         return false;
     }
-
-    /*if (((posX < 0) or (posX > 5)) and ((posxNueva < 0) or (posxNueva > 5)))
-    {
-        system("pause");
-        return false;
-    }
-    if (((posY < 0) or (posY > 5)) and ((posyNueva < 0) or (posyNueva > 5)))
-    {
-        system("pause");
-        return false;
-    }*/
-
-    
 }
 
 string JugadorComputadorAlAzar::darNick()
@@ -189,7 +153,7 @@ string JugadorComputadorAlAzar::cambiarNick(string nuevoNick)
 
 int JugadorComputadorAlAzar::darPuntaje()
 {
-    return puntaje;
+    return juez.darPuntajeJugador1();
 }
 void JugadorComputadorAlAzar::setPuntaje(int nuevoPuntaje)
 {
