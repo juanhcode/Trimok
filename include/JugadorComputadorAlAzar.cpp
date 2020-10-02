@@ -4,6 +4,7 @@
 #include <sstream>
 using namespace std;
 #include "time.h"
+int marcadorMaquina;
 
 JugadorComputadorAlAzar::JugadorComputadorAlAzar()
 {
@@ -146,7 +147,7 @@ string JugadorComputadorAlAzar::darNick()
     return nick;
 }
 
-string JugadorComputadorAlAzar::cambiarNick(string nuevoNick)
+void JugadorComputadorAlAzar::cambiarNick(string nuevoNick)
 {
     nick = nuevoNick;
 }
@@ -158,4 +159,143 @@ int JugadorComputadorAlAzar::darPuntaje()
 void JugadorComputadorAlAzar::setPuntaje(int nuevoPuntaje)
 {
     puntaje += nuevoPuntaje;
+}
+
+void JugadorComputadorAlAzar::poderRetornar(char color, int puntaje)
+{
+    //Retorno
+    marcadorMaquina = puntaje;
+    string temporal = "";
+    if (puntaje < 12)
+    {
+        if (color == 'B')
+        {
+            if (posY == 0 and (posX > 0 and posX < 5))
+            {
+                if (tablero.getFichaActual(5, posX - 1) == " ")
+                {
+                    do
+                    {
+                        cout << "Ingrese la ficha que desea agregar" << endl;
+                        cin >> temporal;
+                    } while (temporal != "R" or (temporal != "P") or temporal != "T");
+                    temporal += "B";
+                    tablero.setAsignarMovimiento(temporal, posY, posX - 1);
+                }
+                else if (tablero.getFichaActual(5, posX + 1) == " ")
+                {
+                    do
+                    {
+                        cout << "Ingrese la ficha que desea agregar" << endl;
+                        cin >> temporal;
+                    } while (temporal != "R" or (temporal != "P") or temporal != "T");
+                    temporal += "B";
+                    tablero.setAsignarMovimiento(temporal, posY, posX + 1);
+                }
+                else
+                {
+                    cout << "No puede Realizar esta accion" << endl;
+                }
+            }
+            if (posY == 0 and (posX == 0))
+            {
+                if (tablero.getFichaActual(5, posX + 1) == " ")
+                {
+                    do
+                    {
+                        cout << "Ingrese la ficha que desea agregar" << endl;
+                        cin >> temporal;
+                    } while (temporal != "R" or (temporal != "P") or temporal != "T");
+                    temporal += "B";
+                    tablero.setAsignarMovimiento(temporal, posY, posX - 1);
+                }
+                else
+                {
+                    cout << "No puede Realizar esta accion" << endl;
+                }
+            }
+            if (posY == 0 and (posX == 5))
+            {
+                if (tablero.getFichaActual(5, posX - 1) == " ")
+                {
+                    do
+                    {
+                        cout << "Ingrese la ficha que desea agregar" << endl;
+                        cin >> temporal;
+                    } while (temporal != "R" or (temporal != "P") or temporal != "T");
+                    temporal += "B";
+                    tablero.setAsignarMovimiento(temporal, posY, posX - 1);
+                }
+                else
+                {
+                    cout << "No puede Realizar esta accion" << endl;
+                }
+            }
+        }
+        ////////////////////////////////////////////////////
+        if (color == 'N')
+        {
+            if (posY == 5 and (posX > 0 and posX < 5))
+            {
+                if (tablero.getFichaActual(0, posX - 1) == " ")
+                {
+                    do
+                    {
+                        cout << "Ingrese la ficha que desea agregar" << endl;
+                        cin >> temporal;
+                    } while (temporal != "R" or (temporal != "P") or temporal != "T");
+                    temporal += "N";
+                    tablero.setAsignarMovimiento(temporal, posY, posX - 1);
+                }
+                else if (tablero.getFichaActual(0, posX + 1) == " ")
+                {
+                    do
+                    {
+                        cout << "Ingrese la ficha que desea agregar" << endl;
+                        cin >> temporal;
+                    } while (temporal != "R" or (temporal != "P") or temporal != "T");
+                    temporal += "N";
+                    tablero.setAsignarMovimiento(temporal, posY, posX + 1);
+                }
+                else
+                {
+                    cout << "No puede Realizar esta accion" << endl;
+                }
+            }
+            if (posY == 5 and (posX == 0))
+            {
+                if (tablero.getFichaActual(0, posX + 1) == " ")
+                {
+                    do
+                    {
+                        cout << "Ingrese la ficha que desea agregar" << endl;
+                        cin >> temporal;
+                    } while (temporal != "R" or (temporal != "P") or temporal != "T");
+                    temporal += "N";
+                    tablero.setAsignarMovimiento(temporal, posY, posX - 1);
+                }
+                else
+                {
+                    cout << "No puede Realizar esta accion" << endl;
+                }
+            }
+            if (posY == 5 and (posX == 5))
+            {
+                if (tablero.getFichaActual(0, posX - 1) == " ")
+                {
+                    do
+                    {
+                        cout << "Ingrese la ficha que desea agregar" << endl;
+                        cin >> temporal;
+                    } while (temporal != "R" or (temporal != "P") or temporal != "T");
+                    temporal += "N";
+                    tablero.setAsignarMovimiento(temporal, posY, posX - 1);
+                }
+                else
+                {
+                    cout << "No puede Realizar esta accion" << endl;
+                }
+            }
+        }
+    }
 }

@@ -1,5 +1,4 @@
 #include "juez.h"
-
 Juez::Juez()
 {
     puntajeJugador1 = 0;

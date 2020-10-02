@@ -16,7 +16,6 @@ Trimok::~Trimok()
 {
 	//Destructor
 }
-
 void Trimok::seleccionarOpcion()
 {
 	cout << endl;
@@ -59,6 +58,7 @@ void Trimok::visualizar()
 				break;
 			case 2:
 				visualizarParejas();
+				break;
 			}
 			system("cls");
 		}
@@ -68,7 +68,7 @@ void Trimok::visualizar()
 void Trimok::seleccionarParejas()
 {
 
-	cout << "  Modo de Juego" << endl;
+	cout << "  Modo de Juego  " << endl;
 	cout << "1- JugadorHumano vs JugadorHumano" << endl;
 	cout << "2- JugadorComputadorAlAzar vs JugadorHumano" << endl;
 	cout << "3- JugadorHumano vs JugadorComputadorAlAzar" << endl;
@@ -83,24 +83,24 @@ void Trimok::seleccionarParejas()
 
 void Trimok::visualizarParejas()
 {
+	ganadorDelJuego->crearArchivo();
 	do
 	{
 		seleccionarParejas();
+
 		{
 			switch (opcionParejas)
 			{
 			case 1:
-				//fabrica->pareja1(*jugadorBlanco, *jugadorNegro);
 				jugadorBlanco = fabrica->darHumano();
 				jugadorNegro = fabrica->darHumano();
-				//cout << "Trimok" << jugadorBlanco->darPuntaje() << endl;
 				obtenerNick();
 				mostrarDatos();
 				e.inicializarTablero();
 				cout << "                   :::TRIMOK:::                       " << endl;
-				//e.mostrarTablero();
 				play();
 				system("pause");
+				//destructor();
 				break;
 
 			case 2:
@@ -151,23 +151,21 @@ void Trimok::obtenerNick()
 
 	cout << "Digite el Nick de el jugador blanco: " << endl;
 	cin >> nickJugadorB;
-	nickJugadorB = jugadorBlanco->cambiarNick(nickJugadorB);
+	jugadorBlanco->cambiarNick(nickJugadorB);
 	cout << "Digite el Nick de el jugador Negro" << endl;
 	cin >> nickJugadorN;
-	nickJugadorN = jugadorNegro->cambiarNick(nickJugadorN);
+	jugadorNegro->cambiarNick(nickJugadorN);
 }
 void Trimok::obtenerNick2(JugadorHumano &j, string nombre)
 {
 	j.cambiarNick(nombre);
 }
-
 void Trimok::play()
 {
 	bool bandera;
 	bool ganador = true;
 	string posActual, posNueva;
 	bool salir = false;
-
 	while (ganador)
 	{
 		bandera = false;
@@ -178,16 +176,6 @@ void Trimok::play()
 			while (bandera != true)
 			{
 				e.mostrarTablero();
-				/*cout << "Puntaje " << jugadorBlanco->cambiarNick(nickJugadorB) << ":" << jugadorBlanco->darPuntaje() << endl;
-				if (jugadorBlanco->darPuntaje() > 11)
-				{
-					cout << "Ganaste!!" << jugadorBlanco->darNick();
-				}
-				else if (jugadorBlanco->darPuntaje() > 11)
-				{
-					cout << "Ganaste!!" << jugadorBlanco->darNick();
-				}*/
-
 				cout << "Puntaje " << jugadorBlanco->darNick() << ":" << jugadorBlanco->darPuntaje() << endl;
 				cout << jugadorBlanco->darNick() << "--> "
 					 << "Ingrese la Posicion actual" << endl;
@@ -195,8 +183,9 @@ void Trimok::play()
 				cout << jugadorBlanco->darNick() << "--> "
 					 << "Ingrese la Posicion que desee mover" << endl;
 				cin >> posNueva;
+				jugadorBlanco->poderRetornar('B', jugadorNegro->darPuntaje()); ////
 				bandera = jugadorBlanco->moverFicha(posNueva, posActual, 'B');
-				if (jugadorBlanco->darPuntaje() >= 1)
+				if (jugadorBlanco->darPuntaje() >= 5)
 				{
 					char opcionLetra;
 					while (!salir)
@@ -209,6 +198,10 @@ void Trimok::play()
 							bandera = true;
 							ganador = false;
 							salir = true;
+							e.inicializarTablero();
+							ganadorDelJuego->setNombre(jugadorNegro->darNick());
+							ganadorDelJuego->setPuntaje(jugadorNegro->darPuntaje());
+							ganadorDelJuego->guardarDatos();
 						}
 						else
 						{
@@ -235,7 +228,6 @@ void Trimok::play()
 		{
 
 			e.mostrarTablero();
-
 			cout << "Puntaje " << jugadorNegro->darNick() << ":" << jugadorNegro->darPuntaje() << endl;
 			cout << jugadorNegro->darNick() << "--> "
 				 << "Ingrese la Posicion actual " << endl;
@@ -243,8 +235,9 @@ void Trimok::play()
 			cout << jugadorNegro->darNick() << "--> "
 				 << "Ingrese la Posicion que desee mover" << endl;
 			cin >> posNueva;
+			jugadorNegro->poderRetornar('N', jugadorBlanco->darPuntaje()); //////////
 			bandera = jugadorNegro->moverFicha(posNueva, posActual, 'N');
-			if (jugadorNegro->darPuntaje() >= 1)
+			if (jugadorNegro->darPuntaje() >= 5)
 			{
 				char opcionLetra;
 				while (!salir)
@@ -257,6 +250,16 @@ void Trimok::play()
 						bandera = true;
 						ganador = false;
 						salir = true;
+						ganadorDelJuego->setNombre(jugadorBlanco->darNick());
+						ganadorDelJuego->setPuntaje(jugadorBlanco->darPuntaje());
+						ganadorDelJuego->guardarDatos();
+					}
+					else
+					{
+						if (tolower(opcionLetra) == 'n')
+						{
+							break;
+						}
 					}
 				}
 				if (!salir)
@@ -265,6 +268,20 @@ void Trimok::play()
 					cout << "Puede seguir Jugando" << endl;
 				}
 			}
+		}
+		if (jugadorBlanco->darPuntaje() == 12)
+		{
+			ganadorDelJuego->setNombre(jugadorBlanco->darNick());
+			ganadorDelJuego->setPuntaje(jugadorBlanco->darPuntaje());
+			ganadorDelJuego->guardarDatos();
+			ganador = false;
+		}
+		if (jugadorNegro->darPuntaje() == 12)
+		{
+			ganadorDelJuego->setNombre(jugadorNegro->darNick());
+			ganadorDelJuego->setPuntaje(jugadorNegro->darPuntaje());
+			ganadorDelJuego->guardarDatos();
+			ganador = false;
 		}
 	}
 }
@@ -746,8 +763,8 @@ void Trimok::playMaquina1(char color, int posicion)
 		posNueva = "";
 		posActual = to_string(maquinaBN) + to_string(colPosicionActual);
 		posNueva = to_string(colPosicionActual + tmpFilaNueva) + to_string(maquinaBN + tmpColumnaNueva);
-		cout << "Actual: " << posActual << endl;
-		cout << "Nueva: " << posNueva << endl;
+		//cout << "Actual: " << posActual << endl;
+		//cout << "Nueva: " << posNueva << endl;
 
 		bandera = maquina->moverFicha(posNueva, posActual, color);
 
@@ -772,3 +789,14 @@ void Trimok::playMaquina1(char color, int posicion)
 		}
 	}
 }
+
+/*void Trimok::destructor()
+{
+	delete jugadorBlanco;
+	delete jugadorNegro;
+	delete maquina;
+	delete juez;
+	delete fabrica;
+	delete ganadorDelJuego;
+	e.~Tablero();
+}*/
