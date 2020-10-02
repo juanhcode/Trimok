@@ -216,7 +216,6 @@ void Trimok::play()
 						cout << "Puede seguir Jugando" << endl;
 					}
 				}
-
 				//retorna verdadero si la regla se cumple
 			}
 		}
@@ -288,7 +287,7 @@ void Trimok::play()
 
 int miRandom(int i, int f)
 {
-	return i + rand() % (f + 1);
+	return i + rand() % (f + 1); //Funcion Para Maquina Vs Jugador o Viceversa 
 }
 
 void Trimok::play2()

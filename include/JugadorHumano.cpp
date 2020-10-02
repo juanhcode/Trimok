@@ -190,7 +190,7 @@ void JugadorHumano::poderRetornar(char color, int puntaje)
         {
             if (posY == 0 and (posX > 0 and posX < 5))
             {
-                if (tablero.getFichaActual(5, posX - 1) == "  ")
+                if (tablero.getFichaActual(1, posY) == "  ")
                 {
                     do
                     {
@@ -198,11 +198,14 @@ void JugadorHumano::poderRetornar(char color, int puntaje)
                         temporal = "";
                         cout << "Ingrese la ficha que desea agregar" << endl;
                         getline(cin, temporal);
-                    } while (temporal != "R" || (temporal != "P") || temporal != "T");
+                    } while (temporal != "R" && (temporal != "P") && temporal != "T");
                     temporal += "B";
-                    tablero.setAsignarMovimiento(temporal, posY, posX - 1);
+                    cout << "Hola" << endl;
+                    cout << "Pos Y" << posY << endl;
+                    cout << "Pos X + 1" << (posX + 1);
+                    tablero.setAsignarMovimiento(temporal, posY,5);
                 }
-                else if (tablero.getFichaActual(5, posX + 1) == "  ")
+                else if (tablero.getFichaActual(1, posY + 1) == "  ")
                 {
                     do
                     {
@@ -210,8 +213,11 @@ void JugadorHumano::poderRetornar(char color, int puntaje)
                         temporal = "";
                         cout << "Ingrese la ficha que desea agregar" << endl;
                         getline(cin, temporal);
-                    } while (temporal != "R" || (temporal != "P") || temporal != "T");
+                    } while (temporal != "R" && (temporal != "P") && temporal != "T");
                     temporal += "B";
+                    cout << "Hola" << endl;
+                    cout << "Pos Y" << posY;
+                    cout << "Pos X + 1" << (posX + 1);
                     tablero.setAsignarMovimiento(temporal, posY, posX + 1);
                 }
                 else
@@ -222,7 +228,7 @@ void JugadorHumano::poderRetornar(char color, int puntaje)
             }
             if (posY == 0 and (posX == 0))
             {
-                if (tablero.getFichaActual(5, posX + 1) == "  ")
+                if (tablero.getFichaActual(1, posY) == "  ")
                 {
                     do
                     {
@@ -230,9 +236,12 @@ void JugadorHumano::poderRetornar(char color, int puntaje)
                         temporal = "";
                         cout << "Ingrese la ficha que desea agregar" << endl;
                         getline(cin, temporal);
-                    } while (temporal != "R" or (temporal != "P") or temporal != "T");
+                    } while (temporal != "R" && (temporal != "P") && temporal != "T");
                     temporal += "B";
-                    tablero.setAsignarMovimiento(temporal, posY, posX - 1);
+                    cout << "Hola" << endl;
+                    cout << "Pos Y" << posY;
+                    cout << "Pos X + 1" << (posX + 1);
+                    tablero.setAsignarMovimiento(temporal, posY, posX + 1);
                 }
                 else
                 {
@@ -242,7 +251,7 @@ void JugadorHumano::poderRetornar(char color, int puntaje)
             }
             if (posY == 0 and (posX == 5))
             {
-                if (tablero.getFichaActual(5, posX - 1) == "  ")
+                if (tablero.getFichaActual(1, posY) == "  ")
                 {
                     do
                     {
@@ -250,9 +259,12 @@ void JugadorHumano::poderRetornar(char color, int puntaje)
                         temporal = "";
                         cout << "Ingrese la ficha que desea agregar" << endl;
                         getline(cin, temporal);
-                    } while (temporal != "R" or (temporal != "P") or temporal != "T");
+                    } while (temporal != "R" && (temporal != "P") && temporal != "T");
                     temporal += "B";
-                    tablero.setAsignarMovimiento(temporal, posY, posX - 1);
+                    cout << "Hola" << endl;
+                    cout << "Pos Y" << posY;
+                    cout << "Pos X + 1" << (posX + 1);
+                    tablero.setAsignarMovimiento(temporal, posY, posX + 1);
                 }
                 else
                 {
@@ -274,7 +286,7 @@ void JugadorHumano::poderRetornar(char color, int puntaje)
                         temporal = "";
                         cout << "Ingrese la ficha que desea agregar" << endl;
                         getline(cin, temporal);
-                    } while (temporal != "R" or (temporal != "P") or temporal != "T");
+                    } while (temporal != "R" && (temporal != "P") && temporal != "T");
                     temporal += "N";
                     tablero.setAsignarMovimiento(temporal, posY, posX - 1);
                 }
@@ -286,7 +298,7 @@ void JugadorHumano::poderRetornar(char color, int puntaje)
                         temporal = "";
                         cout << "Ingrese la ficha que desea agregar" << endl;
                         getline(cin, temporal);
-                    } while (temporal != "R" or (temporal != "P") or temporal != "T");
+                    } while (temporal != "R" && (temporal != "P") && temporal != "T");
                     temporal += "N";
                     tablero.setAsignarMovimiento(temporal, posY, posX + 1);
                 }
@@ -306,7 +318,7 @@ void JugadorHumano::poderRetornar(char color, int puntaje)
                         temporal = "";
                         cout << "Ingrese la ficha que desea agregar" << endl;
                         getline(cin, temporal);
-                    } while (temporal != "R" or (temporal != "P") or temporal != "T");
+                    } while (temporal != "R" && (temporal != "P") && temporal != "T");
                     temporal += "N";
                     tablero.setAsignarMovimiento(temporal, posY, posX - 1);
                 }
@@ -327,7 +339,7 @@ void JugadorHumano::poderRetornar(char color, int puntaje)
                         temporal = "";
                         cout << "Ingrese la ficha que desea agregar" << endl;
                         getline(cin, temporal);
-                    } while (temporal != "R" or (temporal != "P") or temporal != "T");
+                    } while (temporal != "R" && (temporal != "P") && temporal != "T");
                     temporal += "N";
                     tablero.setAsignarMovimiento(temporal, posY, posX - 1);
                 }
