@@ -29,6 +29,7 @@ Colaboracion: tablero
 #include "JugadorComputadorAlAzar.h"
 #include "juez.h"
 #include "FabricaJugador.h"
+#include "Ganadores.h"
 class Trimok
 {
 private:
@@ -36,11 +37,12 @@ private:
     int opcionParaEljugador;
     int opcionParejas;
     Tablero e;
-    JugadorHumano *jugadorBlanco ;
-    JugadorHumano *jugadorNegro ;
-    JugadorComputadorAlAzar *maquina ;
+    JugadorHumano *jugadorBlanco;
+    JugadorHumano *jugadorNegro;
+    JugadorComputadorAlAzar *maquina;
     Juez *juez = new Juez;
-    FabricaJugador *fabrica = new FabricaJugador(); 
+    FabricaJugador *fabrica = new FabricaJugador();
+    Ganadores *ganadorDelJuego = new Ganadores();
 
 public:
     Trimok();
@@ -53,7 +55,7 @@ public:
     void play2();
     void play3();
     void play4();
-    void playMaquina(char color,int posicion);
+    void playMaquina(char color, int posicion);
     //Metodos aun sin utilizar
     void seleccionJugador();
     void escogerJugador();
@@ -64,10 +66,8 @@ public:
     bool salir();
     void seleccionarParejas();
     void visualizarParejas();
-    void obtenerNick2(JugadorHumano &j,string  nombre);
+    void obtenerNick2(JugadorHumano &j, string nombre);
     void playMaquina1(char color, int posicion);
+    void destructor();
 };
 #endif // __CLASTRIMOK
-
-
-
