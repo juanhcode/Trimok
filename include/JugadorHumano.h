@@ -11,8 +11,9 @@ public:
     bool reglas(string cordenadaNueva, string cordenadaActual, char colordeFicha);
     string darNick();
     int darPuntaje();
-    string cambiarNick(string nuevoNick);
+    void cambiarNick(string nuevoNick);
     void setPuntaje(int nuevoPuntaje);
+    void poderRetornar(char color,int puntaje);
     ~JugadorHumano();
 };
 
