@@ -1,8 +1,16 @@
+#include <iostream>
+using namespace std;
 class Ganadores
 {
 private:
-    /* data */
+    string nombre;
+    int puntaje;
 public:
-    Ganadores(/* args */);
+    Ganadores();
     ~Ganadores();
+    void crearArchivo();
+    void guardarDatos();
+    void setPuntaje(int nuevoPuntaje);
+    void setNombre(string nuevoNombre);
+
 };
