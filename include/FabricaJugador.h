@@ -13,9 +13,9 @@ Correos electronicos: juan.manuel.hoyos@correounivalle.edu.co
                     : gallego.cesar@correounivalle.edu.co
                     : Lui.alegria@correounivalle.edu.co
 /*CRC:
-Clase: Ficha
-Responsabilidad:
-Colaboracion: tablero
+Clase: FabricaJugador
+Responsabilidad:  crea dinámicamente los objetos correspondientes
+Colaboracion: Jugador
 */
 #ifndef __CLASSFABRICAJUGADOR
 #define __CLASSFABRICAJUGADOR
@@ -30,8 +30,6 @@ public:
     JugadorComputadorAlAzar* darMaquina();
     JugadorHumano* darHumano();
     void modo1(JugadorHumano *jugadorBlanco,JugadorHumano *jugadorNegro);
-    //void pareja2(JugadorComputadorAlAzar *jugadorMaquina, JugadorHumano *jugadorNegro);
-    //void pareja3(JugadorComputadorAlAzar &jugadorMaquinaB,JugadorComputadorAlAzar &jugadorMaquinaN);
     ~FabricaJugador();
 };
 
