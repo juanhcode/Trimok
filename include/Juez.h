@@ -26,17 +26,14 @@ class Juez
 {
 private:
     int puntajeJugador1;
-    //int puntajeJugador2;
 
 public:
     Juez();
     string mostrarGanador(int puntajeFichaNegra, int puntajeFichaBlanca);
     int darPuntajeJugador1();
     void setPuntajeJugador1(int nuevoPuntajeJug1);
-
     int darPuntajeJugador2();
     void setPuntajeJugador2(int nuevoPuntajeJug2);
-
     ~Juez();
 };
 #endif // __CLASJUEZ
