@@ -37,11 +37,6 @@ int Ficha::darPosicionX()
     return x;
 }
 
-bool Ficha::unEspacioVacio()
-{
-    
-}
-
 bool Ficha::fichaExiste(string posicion)
 {
     bool posX = false;
@@ -71,18 +66,6 @@ bool Ficha::fichaExiste(string posicion)
     }
   
     
-}
-
-bool Ficha::puedeMoverse()
-{
-}
-
-int Ficha::puedeComerUnaFicha(Ficha fichaAComer)
-{
-}
-
-int Ficha::retornoHabilitado()
-{
 }
 
 void Ficha::cambiarTipo(string nuevoTipo)

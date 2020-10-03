@@ -45,11 +45,6 @@ public:
     string darTipo();
     int darPosicionY();
     int darPosicionX();
-    //sin utilizar
-    bool unEspacioVacio();
-    bool puedeMoverse();
-    int puedeComerUnaFicha(Ficha fichaAComer);
-    int retornoHabilitado();
     void cambiarTipo(string nuevoTipo);
     bool fichaExiste(string posicion);
     ~Ficha();
