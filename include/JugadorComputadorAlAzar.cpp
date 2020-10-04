@@ -17,28 +17,20 @@ JugadorComputadorAlAzar::~JugadorComputadorAlAzar()
 }
 
 bool JugadorComputadorAlAzar::moverFicha(string cordenadaNueva, string cordenadaActual, char colordeFicha)
-//PARA LA MAQUINA ES LO MISMO SOLO QUE COMO ARGUMENTO NOS VA RECIBIR COLOR DE LA FICHA
 {
 
     string temporal;
     bool bandera;
     bandera = reglas(cordenadaNueva, cordenadaActual, colordeFicha);
-    //Para la maquina solo va recibir como argumento el color de la ficha
     if (bandera)
     {
         temporal = tablero.getFichaActual(posY, posX); //guarda la ficha actual en esa variable
         tablero.setPosicionBlanca(posY, posX);         //quiere decir que la posicion actual queda vacia
         tablero.setAsignarMovimiento(temporal, posyNueva, posxNueva);
-        //tablero.darTablerito()[posyNueva][posxNueva].cambiarTipo(temporal);
-        //system("cls");
-        //aqui el tablero se va actualizando
-        //tablero.mostrarTablero();
         return true;
     }
     else
     {
-        //system("cls");
-        //tablero.mostrarTablero();
         return false;
     }
 }
@@ -94,20 +86,17 @@ bool JugadorComputadorAlAzar::reglas(string cordenadaNueva, string cordenadaActu
     //Ficha Blanca a negra
     if ((temporalfichaActual[0] == 'T' and temporalfichaNueva[0] == 'P') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
     {
-        //jugador.setPuntaje(1);
         juez.setPuntajeJugador1(1);
         return true;
     }
 
     else if ((temporalfichaActual[0] == 'R' and temporalfichaNueva[0] == 'T') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
     {
-        //jugador.setPuntaje(1);
         juez.setPuntajeJugador1(1);
         return true;
     }
     else if ((temporalfichaActual[0] == 'P' and temporalfichaNueva[0] == 'R') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
     {
-        //jugador.setPuntaje(1);
         juez.setPuntajeJugador1(1);
         return true;
     }
@@ -119,20 +108,17 @@ bool JugadorComputadorAlAzar::reglas(string cordenadaNueva, string cordenadaActu
     //ficha negra a blanca
     else if ((temporalfichaActual[0] == 'T' and temporalfichaNueva[0] == 'P') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
     {
-        //jugador.setPuntaje(1);
         juez.setPuntajeJugador1(1);
         return true;
     }
 
     else if ((temporalfichaActual[0] == 'R' and temporalfichaNueva[0] == 'T') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
     {
-        //jugador.setPuntaje(1);
         juez.setPuntajeJugador1(1);
         return true;
     }
     else if ((temporalfichaActual[0] == 'P' and temporalfichaNueva[0] == 'R') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
     {
-        //jugador.setPuntaje(1);
         juez.setPuntajeJugador1(1);
         return true;
     }
