@@ -48,6 +48,7 @@ public:
     string getFichaActual(int posX,int posY);
     void setPosicionBlanca(int posX,int posY);
     void setAsignarMovimiento(string temporal,int posyNueva,int posxNueva);
+    bool setAsignarMovimiento(string temporal);
     
 };
 #endif // __CLASTABLERO

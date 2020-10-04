@@ -5,14 +5,13 @@
 #include <math.h>
 using namespace std;
 //variables globales
-std::vector<std::vector<Ficha>>Tablero:: tablerito;
+std::vector<std::vector<Ficha>> Tablero::tablerito;
 Tablero::Tablero()
 {
 }
 
 Tablero::~Tablero()
 {
-    
 }
 void Tablero::inicializarTablero()
 {
@@ -68,11 +67,10 @@ void Tablero::inicializarTablero()
     }
 }
 
-
 void Tablero::mostrarTablero()
 {
-    
-    cout<<"                   :::TRIMOK:::                       "<<endl;
+
+    cout << "                   :::TRIMOK:::                       " << endl;
     cout << "    __________________________________________" << endl;
     for (int i = 0; i < tablerito.size(); i++)
     {
@@ -121,13 +119,10 @@ int Tablero::verificarPosicion(int x, char y)
 }
 bool Tablero::moverFicha(string cordenadaNueva, string cordenadaActual, char colordeFicha)
 {
-
-    
 }
 
 bool Tablero::rangoTablero()
 {
-    
 }
 bool Tablero::retornoHabilitado(int x, int y)
 {
@@ -135,7 +130,6 @@ bool Tablero::retornoHabilitado(int x, int y)
 
 bool Tablero::puedeHacerRetorno(int actualx, int actualy, int nuevax, int nuevay)
 {
-    
 }
 
 vector<vector<Ficha>> Tablero::darTablerito()
@@ -159,4 +153,20 @@ void Tablero::setPosicionBlanca(int posX, int posY)
 void Tablero::setAsignarMovimiento(string temporal, int posyNueva, int posxNueva)
 {
     tablerito[posyNueva][posxNueva].cambiarTipo(temporal);
+}
+
+//Metodo para el de retornar Movimiento
+bool Tablero::setAsignarMovimiento(string temporal)
+{
+    bool resultado = false;
+    for (int i = 0; i < 5; i++)
+    {
+        if (tablerito[5][i].darTipo() == "  ")
+        {
+            resultado = true;
+            tablerito[5][i].cambiarTipo(temporal);
+            break;
+        }
+    }
+    return resultado;
 }
