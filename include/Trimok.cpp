@@ -183,9 +183,9 @@ void Trimok::play()
 				cout << jugadorBlanco->darNick() << "--> "
 					 << "Ingrese la Posicion que desee mover" << endl;
 				cin >> posNueva;
-				jugadorBlanco->poderRetornar('B', jugadorNegro->darPuntaje()); ////
+				//jugadorBlanco->poderRetornar('B', jugadorNegro->darPuntaje()); ////
 				bandera = jugadorBlanco->moverFicha(posNueva, posActual, 'B');
-				if (jugadorBlanco->darPuntaje() >= 5)
+				if (jugadorBlanco->darPuntaje() >= 6)
 				{
 					char opcionLetra;
 					while (!salir)
@@ -234,9 +234,9 @@ void Trimok::play()
 			cout << jugadorNegro->darNick() << "--> "
 				 << "Ingrese la Posicion que desee mover" << endl;
 			cin >> posNueva;
-			jugadorNegro->poderRetornar('N', jugadorBlanco->darPuntaje()); //////////
+			//jugadorNegro->poderRetornar('N', jugadorBlanco->darPuntaje()); //////////
 			bandera = jugadorNegro->moverFicha(posNueva, posActual, 'N');
-			if (jugadorNegro->darPuntaje() >= 5)
+			if (jugadorNegro->darPuntaje() >= 6)
 			{
 				char opcionLetra;
 				while (!salir)
@@ -268,15 +268,17 @@ void Trimok::play()
 				}
 			}
 		}
-		if (jugadorBlanco->darPuntaje() == 12)
+		if (jugadorBlanco->darPuntaje() == 11)
 		{
+			cout << jugadorBlanco->darNick() <<": "<< "Es El Ganador" << endl;
 			ganadorDelJuego->setNombre(jugadorBlanco->darNick());
 			ganadorDelJuego->setPuntaje(jugadorBlanco->darPuntaje());
 			ganadorDelJuego->guardarDatos();
 			ganador = false;
 		}
-		if (jugadorNegro->darPuntaje() == 12)
+		if (jugadorNegro->darPuntaje() == 11)
 		{
+			cout << jugadorNegro->darNick() <<": "<< "Es El Ganador" << endl;
 			ganadorDelJuego->setNombre(jugadorNegro->darNick());
 			ganadorDelJuego->setPuntaje(jugadorNegro->darPuntaje());
 			ganadorDelJuego->guardarDatos();
@@ -287,7 +289,7 @@ void Trimok::play()
 
 int miRandom(int i, int f)
 {
-	return i + rand() % (f + 1); //Funcion Para Maquina Vs Jugador o Viceversa 
+	return i + rand() % (f + 1); //Funcion Para Maquina Vs Jugador o Viceversa
 }
 
 void Trimok::play2()
@@ -314,7 +316,6 @@ void Trimok::play2()
 
 				for (int i = 0; i < 1; i++)
 				{
-					//temporal = x[miRandom(0, 5)];
 					temporal1 = x[miRandom(0, 5)];
 					tempora3 = x[miRandom(0, 1)];
 					temporal4 = x[miRandom(0, 1)];
@@ -322,8 +323,6 @@ void Trimok::play2()
 
 				posActual = "";
 				posNueva = "";
-				//cout << "-" << temporal << endl;
-				//cout << "*" << temporal << endl;
 				posActual = to_string(temporal);
 				posActual += to_string(temporal1);
 				if ((temporal == 0) && (tempora3 == 1))
@@ -351,7 +350,6 @@ void Trimok::play2()
 					temporal = 5;
 				}
 
-				//cout << bandera << endl;
 				//retorna verdadero si la regla se cumple
 			}
 		}
@@ -368,6 +366,20 @@ void Trimok::play2()
 			cin >> posNueva;
 			bandera = jugadorNegro->moverFicha(posNueva, posActual, 'N');
 			temporal = 5;
+		}
+		if (maquina->darPuntaje() == 12)
+		{
+			ganadorDelJuego->setNombre(maquina->darNick());
+			ganadorDelJuego->setPuntaje(maquina->darPuntaje());
+			ganadorDelJuego->guardarDatos();
+			ganador = false;
+		}
+		if (jugadorNegro->darPuntaje() == 12)
+		{
+			ganadorDelJuego->setNombre(jugadorNegro->darNick());
+			ganadorDelJuego->setPuntaje(jugadorNegro->darPuntaje());
+			ganadorDelJuego->guardarDatos();
+			ganador = false;
 		}
 	}
 }
@@ -479,106 +491,12 @@ void Trimok::play4()
 			e.mostrarTablero();
 			system("pause");
 			playMaquina1('B', 5);
-			/*while (bandera != true)
-			{
 
-				
-				maquinaN = 0;
-				for (int i = 0; i < 1; i++)
-				{
-					//temporal = x[miRandom(0, 5)];
-					temporal1 = x[miRandom(0, 5)];
-					tempora3 = x[miRandom(0, 1)];
-					temporal4 = x[miRandom(0, 1)];
-				}
-
-				posActual = "";
-				posNueva = "";
-				//cout << "-" << temporal << endl;
-				//cout << "*" << temporal << endl;
-				posActual = to_string(maquinaB);
-				posActual += to_string(temporal1);
-				if ((maquinaB == 0) && (tempora3 == 1))
-				{
-					posNueva = to_string(maquinaB);
-				}
-				else
-				{
-					posNueva = to_string(maquinaB - tempora3);
-				}
-				/////////////
-				//posNueva += to_string(temporal1 + temporal4);
-				if ((temporal1 == 0) && (temporal4 == 1))
-				{
-					posNueva += to_string(temporal1);
-				}
-				else
-				{
-					posNueva += to_string(temporal1 - temporal4);
-				}
-
-				bandera = maquina->moverFicha(posNueva, posActual, 'B');
-				maquinaB -= 1; //Recorre filas
-				if (maquinaB < 0)
-				{
-					maquinaB = 5;
-				}
-
-				//cout << bandera << endl;
-				//retorna verdadero si la regla se cumple
-			}*/
 			bandera = false;
 			e.mostrarTablero();
 			system("pause");
 			playMaquina1('N', 0);
 		}
-
-		/*while (bandera != true)
-		{
-
-			playMaquina('N', 0);
-			/*maquinaB = 5;
-			for (int i = 0; i < 1; i++)
-			{
-				//temporal = x[miRandom(0, 5)];
-				temporal1 = x[miRandom(0, 5)];
-				tempora3 = x[miRandom(0, 1)];
-				temporal4 = x[miRandom(0, 1)];
-			}
-
-			posActual = "";
-			posNueva = "";
-			//cout << "-" << temporal << endl;
-			//cout << "*" << temporal << endl;
-			posActual = to_string(maquinaN);
-			posActual += to_string(temporal1);
-			if ((maquinaN == 5) && (tempora3 == 1))
-			{
-				posNueva = to_string(maquinaN);
-			}
-			else
-			{
-				posNueva = to_string(maquinaN + tempora3);
-			}
-			/////////////
-			//posNueva += to_string(temporal1 + temporal4);
-			if ((temporal1 == 5) && (temporal4 == 1))
-			{
-				posNueva += to_string(temporal1);
-			}
-			else
-			{
-				posNueva += to_string(temporal1 + temporal4);
-			}
-
-			bandera = maquina->moverFicha(posNueva, posActual, 'N');
-			maquinaN += 1; //Recorre filas
-			if (maquinaN > 5)
-			{
-				maquinaN = 0;
-			}
-		}
-		*/
 	}
 }
 
@@ -628,11 +546,8 @@ void Trimok::playMaquina(char color, int posicion)
 			{
 				posNueva = to_string(maquinaBN - tempora3);
 			}
-
-			//posNueva = to_string(maquinaBN - tempora3);
 		}
 		/////////////
-		//posNueva += to_string(temporal1 + temporal4);
 		if ((temporal1 == (5 - posicion)) && (temporal4 == 1))
 		{
 			posNueva += to_string(temporal1);
@@ -726,17 +641,6 @@ void Trimok::playMaquina1(char color, int posicion)
 				}
 			}
 		}
-		/*if (((maquinaBN + tmpFilaNueva) <= 0) && ((maquinaBN + tmpColumnaNueva) <= 0))
-		{
-			tmpColumnaNueva = 0;
-			tmpFilaNueva = 1;
-		}
-
-		if (((maquinaBN + tmpFilaNueva) >= 5) && ((maquinaBN + tmpColumnaNueva) >= 5))
-		{
-			tmpColumnaNueva = 0;
-			tmpFilaNueva = -1;
-		}*/
 		if ((colPosicionActual + tmpFilaNueva) < 0)
 		{
 			colPosicionActual = 0;
@@ -788,14 +692,3 @@ void Trimok::playMaquina1(char color, int posicion)
 		}
 	}
 }
-
-/*void Trimok::destructor()
-{
-	delete jugadorBlanco;
-	delete jugadorNegro;
-	delete maquina;
-	delete juez;
-	delete fabrica;
-	delete ganadorDelJuego;
-	e.~Tablero();
-}*/
