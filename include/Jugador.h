@@ -16,11 +16,8 @@ Correos electronicos: juan.manuel.hoyos@correounivalle.edu.co
 Clase: Jugador
 Responsabilidad:
 -mover ficha
--capturar fichas del opositor
 -movimiento especial
--seleccionar ficha posicion
--agregar dicha posicion 
--agregar ficha 
+-poder Retornar
 Colaboracion:tablero
 */
 #include "Ficha.h"
