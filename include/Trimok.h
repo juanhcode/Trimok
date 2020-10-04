@@ -56,13 +56,12 @@ public:
     void play3();
     void play4();
     void playMaquina(char color, int posicion);
-    //Metodos aun sin utilizar
+    //Metodos sin utilizar
     void seleccionJugador();
     void escogerJugador();
     int cambiarPuntaje(int puntaje, int tablero);
     void visualizarMarcador(int puntajeFichaNegra, int puntajeFichaBlanca);
     int obtenerJugadores(int jugador1, int jugador2);
-    //int empezarJuego(Tablero Tablerito, Jugador Jugador1, Jugador Jugador2, Ficha FichaN, Ficha FichaB);
     bool salir();
     void seleccionarParejas();
     void visualizarParejas();
