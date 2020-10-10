@@ -183,7 +183,7 @@ void Trimok::play()
 				cout << jugadorBlanco->darNick() << "--> "
 					 << "Ingrese la Posicion que desee mover" << endl;
 				cin >> posNueva;
-				jugadorBlanco->poderRetornar('B', jugadorNegro->darPuntaje()); ////
+				//jugadorBlanco->poderRetornar('B', jugadorNegro->darPuntaje()); /RETORNO
 				bandera = jugadorBlanco->moverFicha(posNueva, posActual, 'B');
 				if (jugadorBlanco->darPuntaje() >= 6)
 				{
@@ -234,7 +234,7 @@ void Trimok::play()
 			cout << jugadorNegro->darNick() << "--> "
 				 << "Ingrese la Posicion que desee mover" << endl;
 			cin >> posNueva;
-			jugadorNegro->poderRetornar('N', jugadorBlanco->darPuntaje()); //////////
+			//jugadorNegro->poderRetornar('N', jugadorBlanco->darPuntaje()); /RETORNO
 			bandera = jugadorNegro->moverFicha(posNueva, posActual, 'N');
 			if (jugadorNegro->darPuntaje() >= 6)
 			{
@@ -268,7 +268,7 @@ void Trimok::play()
 				}
 			}
 		}
-		if (jugadorBlanco->darPuntaje() == 12)
+		if (jugadorBlanco->darPuntaje() == 11)
 		{
 			cout << jugadorBlanco->darNick() << ": "
 				 << "Es El Ganador" << endl;
