@@ -33,22 +33,22 @@ class Tablero
 {
 private:
     static std::vector<std::vector<Ficha>> tablerito;
+
 public:
     Tablero();
     ~Tablero();
     void inicializarTablero();
     void mostrarTablero();
     int verificarPosicion(int x, char y);
-    bool moverFicha(string cordenadaNueva, string cordenadaActual,char colordeFicha);
+    bool moverFicha(string cordenadaNueva, string cordenadaActual, char colordeFicha);
     bool retornoHabilitado(int x, int y);
     bool puedeHacerRetorno(int actualX, int actualY, int nuevaX, int nuevaY);
-    bool reglas(string cordenadaNueva, string cordenadaActual,char colordeFicha);/*NO SE HA UTILIZADO */
+    bool reglas(string cordenadaNueva, string cordenadaActual, char colordeFicha); /*NO SE HA UTILIZADO */
     bool rangoTablero();
     vector<vector<Ficha>> darTablerito();
-    string getFichaActual(int posX,int posY);
-    void setPosicionBlanca(int posX,int posY);
-    void setAsignarMovimiento(string temporal,int posyNueva,int posxNueva);
-    bool setAsignarMovimiento(string temporal);
-    
+    string getFichaActual(int posX, int posY);
+    void setPosicionBlanca(int posX, int posY);
+    void setAsignarMovimiento(string temporal, int posyNueva, int posxNueva);
+    void setAsignarMovimientoRetorno(string temporal, int Columna, int filaT);
 };
 #endif // __CLASTABLERO

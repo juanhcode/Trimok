@@ -183,7 +183,7 @@ void Trimok::play()
 				cout << jugadorBlanco->darNick() << "--> "
 					 << "Ingrese la Posicion que desee mover" << endl;
 				cin >> posNueva;
-				//jugadorBlanco->poderRetornar('B', jugadorNegro->darPuntaje()); ////
+				jugadorBlanco->poderRetornar('B', jugadorNegro->darPuntaje()); ////
 				bandera = jugadorBlanco->moverFicha(posNueva, posActual, 'B');
 				if (jugadorBlanco->darPuntaje() >= 6)
 				{
@@ -234,7 +234,7 @@ void Trimok::play()
 			cout << jugadorNegro->darNick() << "--> "
 				 << "Ingrese la Posicion que desee mover" << endl;
 			cin >> posNueva;
-			//jugadorNegro->poderRetornar('N', jugadorBlanco->darPuntaje()); //////////
+			jugadorNegro->poderRetornar('N', jugadorBlanco->darPuntaje()); //////////
 			bandera = jugadorNegro->moverFicha(posNueva, posActual, 'N');
 			if (jugadorNegro->darPuntaje() >= 6)
 			{
@@ -268,17 +268,19 @@ void Trimok::play()
 				}
 			}
 		}
-		if (jugadorBlanco->darPuntaje() == 11)
+		if (jugadorBlanco->darPuntaje() == 12)
 		{
-			cout << jugadorBlanco->darNick() <<": "<< "Es El Ganador" << endl;
+			cout << jugadorBlanco->darNick() << ": "
+				 << "Es El Ganador" << endl;
 			ganadorDelJuego->setNombre(jugadorBlanco->darNick());
 			ganadorDelJuego->setPuntaje(jugadorBlanco->darPuntaje());
 			ganadorDelJuego->guardarDatos();
 			ganador = false;
 		}
-		if (jugadorNegro->darPuntaje() == 11)
+		if (jugadorNegro->darPuntaje() == 12)
 		{
-			cout << jugadorNegro->darNick() <<": "<< "Es El Ganador" << endl;
+			cout << jugadorNegro->darNick() << ": "
+				 << "Es El Ganador" << endl;
 			ganadorDelJuego->setNombre(jugadorNegro->darNick());
 			ganadorDelJuego->setPuntaje(jugadorNegro->darPuntaje());
 			ganadorDelJuego->guardarDatos();
@@ -466,6 +468,20 @@ void Trimok::play3()
 				temporal = 0;
 			}
 		}
+		if (jugadorBlanco->darPuntaje() == 12)
+		{
+			ganadorDelJuego->setNombre(jugadorBlanco->darNick());
+			ganadorDelJuego->setPuntaje(jugadorBlanco->darPuntaje());
+			ganadorDelJuego->guardarDatos();
+			ganador = false;
+		}
+		if (maquina->darPuntaje() == 12)
+		{
+			ganadorDelJuego->setNombre(maquina->darNick());
+			ganadorDelJuego->setPuntaje(maquina->darPuntaje());
+			ganadorDelJuego->guardarDatos();
+			ganador = false;
+		}
 	}
 }
 
@@ -496,6 +512,13 @@ void Trimok::play4()
 			e.mostrarTablero();
 			system("pause");
 			playMaquina1('N', 0);
+		}
+		if (maquina->darPuntaje() == 12)
+		{
+			ganadorDelJuego->setNombre(maquina->darNick());
+			ganadorDelJuego->setPuntaje(maquina->darPuntaje());
+			ganadorDelJuego->guardarDatos();
+			ganador = false;
 		}
 	}
 }

@@ -101,13 +101,12 @@ bool JugadorHumano::reglas(string cordenadaNueva, string cordenadaActual, char c
     {
         return false;
     }
-
-    if (colordeFicha == 'B' and posX == 0)
+    if (colordeFicha == 'B' && posY == 0)
     { ///CONDICIONALES DE RETORNO HABILITADO
         poderRetornar(colordeFicha, marcador);
         return true;
     }
-    if (colordeFicha == 'N' and posX == 5)
+    if (colordeFicha == 'N' && posY == 5)
     {
         poderRetornar(colordeFicha, marcador);
         return true;
@@ -116,17 +115,23 @@ bool JugadorHumano::reglas(string cordenadaNueva, string cordenadaActual, char c
     //Ficha Blanca a negra
     if ((temporalfichaActual[0] == 'T' and temporalfichaNueva[0] == 'P') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
     {
+        //TIJERA A PAPEL
+        //cout << "TIJERA A PAPEL Color Blanco" << endl;
         juez.setPuntajeJugador1(1);
         return true;
     }
 
     else if ((temporalfichaActual[0] == 'R' and temporalfichaNueva[0] == 'T') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
     {
+        //ROCA A TIJERA
+        //cout << "ROCA A TIJERA Color Blanco" << endl;
         juez.setPuntajeJugador1(1);
         return true;
     }
     else if ((temporalfichaActual[0] == 'P' and temporalfichaNueva[0] == 'R') and (temporalfichaActual[1] == 'B' and temporalfichaNueva[1] == 'N'))
     {
+        //PAPEL A ROCA
+        //cout << "PAPEL A ROCA Color Blanco" << endl;
         juez.setPuntajeJugador1(1);
         return true;
     }
@@ -138,19 +143,21 @@ bool JugadorHumano::reglas(string cordenadaNueva, string cordenadaActual, char c
     //ficha negra a blanca
     else if ((temporalfichaActual[0] == 'T' and temporalfichaNueva[0] == 'P') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
     {
+        //cout << "TIJERA A PAPEL Color Negro" << endl;
         juez.setPuntajeJugador1(1);
         return true;
     }
 
     else if ((temporalfichaActual[0] == 'R' and temporalfichaNueva[0] == 'T') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
     {
-
+        //cout << "ROCA A TIJERA Color Negro" << endl;
         juez.setPuntajeJugador1(1);
         return true;
     }
     else if ((temporalfichaActual[0] == 'P' and temporalfichaNueva[0] == 'R') and (temporalfichaActual[1] == 'N' and temporalfichaNueva[1] == 'B'))
     {
 
+        //cout << "PAPEL A ROCA Color Negro" << endl;
         juez.setPuntajeJugador1(1);
         return true;
     }
@@ -179,15 +186,15 @@ void JugadorHumano::setPuntaje(int nuevoPuntaje)
     puntaje += nuevoPuntaje;
 }
 
-void JugadorHumano::poderRetornar(char color, int puntaje)
+void JugadorHumano::poderRetornar(char color, int puntajeRetorno)
 {
     //retorno habilitado
-    marcador = puntaje;
+    marcador = puntajeRetorno;
     bool bandera = false;
     string temporal = "";
-    if (puntaje > 0 and (posX == 0 or posX == 5))
+    if (puntajeRetorno > 0 && (posY == 0 or posY == 5))
     {
-        if (color == 'B' and posX == 0)
+        if (color == 'B' && posY == 0)
         {
             //JUGADOR BLANCO
             do
@@ -198,22 +205,22 @@ void JugadorHumano::poderRetornar(char color, int puntaje)
                 cin >> temporal;
             } while (temporal != "R" && (temporal != "P") && temporal != "T");
             temporal += "B";
-            if (posX == 0 and (posY >= 0 and posY <= 5))
+            if (posY == 0 && (posX - 1 >= 0 && posX + 1 <= 5))
             {
-                bandera = tablero.setAsignarMovimiento(temporal);
+                tablero.setAsignarMovimientoRetorno(temporal, posX, posY);
             }
-            else if (posX == 5 and (posY >= 0 and posY <= 5))
+            /*else if (posX == 5 and (posY >= 0 and posY <= 5))
             {
-                bandera = tablero.setAsignarMovimiento(temporal);
-            }
-            if (!bandera)
+                bandera = tablero.setAsignarMovimiento(temporal,posX);
+            }*/
+            else // IF !bandera
             {
                 cout << "No puede Realizar esta accion" << endl;
                 system("pause");
             }
         }
         //////////////////////////////////////////////////// JUGADOR NEGRO
-        if (color == 'N' and posX == 5)
+        if (color == 'N' && posY == 5)
         {
 
             do
@@ -224,15 +231,15 @@ void JugadorHumano::poderRetornar(char color, int puntaje)
                 cin >> temporal;
             } while (temporal != "R" && (temporal != "P") && temporal != "T");
             temporal += "N";
-            if (posX == 0 and (posY >= 0 and posY <= 5))
+            /*if (posX == 0 and (posY >= 0 and posY <= 5))
             {
-                bandera = tablero.setAsignarMovimiento(temporal);
-            }
-            else if (posX == 5 and (posY >= 0 and posY <= 5))
+                bandera = tablero.setAsignarMovimiento(temporal,posX);
+            }*/
+            if (posY == 5 && (posX - 1 >= 0 && posX + 1 <= 5))
             {
-                bandera = tablero.setAsignarMovimiento(temporal);
+                tablero.setAsignarMovimientoRetorno(temporal, posX, posY);
             }
-            if (!bandera)
+            else // IF!bandera
             {
                 cout << "No puede Realizar esta accion" << endl;
                 system("pause");

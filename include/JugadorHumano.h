@@ -22,10 +22,10 @@ Colaboracion: Jugador
 #include "Jugador.h"
 #ifndef __CLASSJUGADORHUMANO
 #define __CLASSJUGADORHUMANO
-class JugadorHumano : public Jugador
+class JugadorHumano : public Jugador //CLASE PADRE JUGADOR 
 {
 private:
-    /* data */
+
 public:
     JugadorHumano();
     bool moverFicha(string cordenadaNueva, string cordenadaActual, char colordeFicha);
@@ -34,7 +34,7 @@ public:
     int darPuntaje();
     void cambiarNick(string nuevoNick);
     void setPuntaje(int nuevoPuntaje);
-    void poderRetornar(char color, int puntaje);
+    void poderRetornar(char color, int puntajeRetorno);
     ~JugadorHumano();
 };
 

@@ -156,10 +156,10 @@ void Tablero::setAsignarMovimiento(string temporal, int posyNueva, int posxNueva
 }
 
 //Metodo para el de retornar Movimiento
-bool Tablero::setAsignarMovimiento(string temporal)
+void Tablero::setAsignarMovimientoRetorno(string temporal, int ColumnaT, int filaT)
 {
     bool resultado = false;
-    for (int i = 0; i < 5; i++)
+    /*for (int i = 0; i < 6; i++)
     {
         if (tablerito[5][i].darTipo() == "  ")
         {
@@ -167,6 +167,23 @@ bool Tablero::setAsignarMovimiento(string temporal)
             tablerito[5][i].cambiarTipo(temporal);
             break;
         }
+        
+    }*/
+    if (tablerito[5 - filaT][ColumnaT - 1].darTipo() == "  ")
+    {
+        resultado = true;
+        tablerito[5 - filaT][ColumnaT - 1].cambiarTipo(temporal);
     }
-    return resultado;
+
+    if (tablerito[5 - filaT][ColumnaT + 1].darTipo() == "  ")
+    {
+        resultado = true;
+        tablerito[5 - filaT][ColumnaT - 1].cambiarTipo(temporal);
+    }
+
+    if (resultado == false)
+    {
+        cout << "No puede realizar esta opcion" << endl;
+
+    }
 }
